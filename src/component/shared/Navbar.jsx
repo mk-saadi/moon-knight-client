@@ -3,6 +3,7 @@ import img from "../../assets/img.png";
 import { useContext, useState } from "react";
 import { AuthContext } from "../authProvider/AuthProvider";
 import { toast } from "react-hot-toast";
+import { GiHamburgerMenu } from "react-icons/gi";
 
 const Navbar = () => {
     const { user, logOut } = useContext(AuthContext);
@@ -30,36 +31,26 @@ const Navbar = () => {
                 <Link to="/">Home</Link>
             </li>
             <li>
-                <Link to="/about">About</Link>
+                <Link to="/blog">Blog</Link>
+            </li>
+            <li>
+                <Link to="/allToys">All Toys</Link>
             </li>
         </>
     );
     return (
-        <div className="navbar border border-b-[1px]">
-            <div className="navbar-start">
+        <div className="navbar border border-b-[1px] py-3">
+            <div className="navbar-start pl-2 sm:pl-6">
                 <div className="dropdown">
                     <label
                         tabIndex={0}
-                        className="btn btn-ghost lg:hidden"
+                        className="cursor-pointer lg:hidden"
                     >
-                        <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            className="h-5 w-5"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            stroke="currentColor"
-                        >
-                            <path
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                strokeWidth="2"
-                                d="M4 6h16M4 12h8m-8 6h16"
-                            />
-                        </svg>
+                        <GiHamburgerMenu className="h-8 w-8 mr-4" />
                     </label>
                     <ul
                         tabIndex={0}
-                        className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
+                        className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-sm w-52"
                     >
                         {navItems}
                     </ul>
@@ -78,15 +69,15 @@ const Navbar = () => {
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal px-1">{navItems}</ul>
             </div>
-            <div className="navbar-end">
-                {user?.email ? (
-                    <div className="dropdown dropdown-end rounded-sm drop-shadow-md">
+            <div className="navbar-end sm:pr-6 pr-2">
+                {user ? (
+                    <div className="dropdown dropdown-end rounded-sm drop-shadow-md z-50">
                         <label
                             tabIndex={0}
-                            className="btn btn-ghost rounded-btn"
+                            className="cursor-pointer mr-4"
                         >
                             <img
-                                className="h-12 w-12 mask mask-circle"
+                                className="h-12 w-12 mask mask-circle object-cover"
                                 src={user.photoURL}
                                 alt="profile image"
                                 onMouseEnter={() => setShowUserName(true)}
@@ -96,20 +87,28 @@ const Navbar = () => {
                         </label>
                         <ul
                             tabIndex={0}
-                            className="menu dropdown-content p-2 shadow bg-base-100 rounded-sm mt-4 flex flex-col gap-2"
+                            className="menu dropdown-content p-2 w-36 shadow bg-base-100 rounded-sm mt-4 flex flex-col gap-2 z-50"
                         >
+                            <p className="text-sm">{user.displayName}</p>
+                            <hr className="mb-3" />
                             <Link>
-                                <button className="btn b rounded-sm text-white">Profile</button>
+                                <button className="btn b rounded-sm text-white w-full">
+                                    Profile
+                                </button>
                             </Link>
                             <Link to="/myToys">
-                                <button className="btn  rounded-sm text-white">My Toys</button>
+                                <button className="btn  rounded-sm text-white w-full">
+                                    My Toys
+                                </button>
                             </Link>
                             <Link to="/addAToys">
-                                <button className="btn  rounded-sm text-white">Add Toy</button>
+                                <button className="btn  rounded-sm text-white w-full">
+                                    Add Toy
+                                </button>
                             </Link>
                             <Link>
                                 <button
-                                    className="btn btn-error rounded-sm text-white"
+                                    className="btn btn-error rounded-sm text-white w-full"
                                     onClick={handleLogOut}
                                 >
                                     Log Out

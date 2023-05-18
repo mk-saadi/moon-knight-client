@@ -16,7 +16,7 @@ export const AuthContext = createContext();
 
 // eslint-disable-next-line react/prop-types
 const AuthProvider = ({ children }) => {
-    const [user, setUser] = useState();
+    const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
     const googleProvider = new GoogleAuthProvider();
 
@@ -44,10 +44,22 @@ const AuthProvider = ({ children }) => {
         const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
             setLoading(false);
             setUser(currentUser);
+            if (currentUser) {
+                localStorage.setItem("user", JSON.stringify(currentUser));
+            } else {
+                localStorage.removeItem("user");
+            }
         });
         return () => {
             return unsubscribe;
         };
+    }, []);
+
+    useEffect(() => {
+        const storedUser = localStorage.getItem("user");
+        if (storedUser) {
+            setUser(JSON.parse(storedUser));
+        }
     }, []);
 
     const authInfo = {

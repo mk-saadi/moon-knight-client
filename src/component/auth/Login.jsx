@@ -45,6 +45,7 @@ const Login = () => {
                         progress: undefined,
                     });
                 }
+                console.log(user);
             })
             .catch((error) => {
                 toast.error(error.message, {

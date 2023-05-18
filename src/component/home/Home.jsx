@@ -1,9 +1,10 @@
 import { useLoaderData } from "react-router-dom";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
+import Banner from "./Banner";
 
 const Home = () => {
     const figures = useLoaderData();
-    console.log(figures);
+
     return (
         <div>
             <h1 className="text-3xl font-bold underline">{figures.length}</h1>
@@ -24,6 +25,14 @@ const Home = () => {
                     <h2>arknight</h2>
                 </TabPanel>
             </Tabs>
+            <div className="flex gap-2">
+                {figures.slice(0, 5).map((fig) => (
+                    <Banner
+                        key={fig._id}
+                        fig={fig}
+                    ></Banner>
+                ))}
+            </div>
         </div>
     );
 };

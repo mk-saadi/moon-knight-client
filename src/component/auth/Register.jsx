@@ -37,11 +37,11 @@ const Register = () => {
         newUser(email, password)
             .then((res) => {
                 const user = res.user;
+                updateProfile(auth.currentUser, {
+                    displayName: name,
+                    photoURL: URL.createObjectURL(profile),
+                });
                 if (user.uid) {
-                    updateProfile(auth.currentUser, {
-                        displayName: name,
-                        photoURL: URL.createObjectURL(profile),
-                    });
                     toast.success("Account successfully created", {
                         position: "top-center",
                         autoClose: 4000,
@@ -138,7 +138,7 @@ const Register = () => {
                     </div>
                     <div className="flex justify-center items-center mt-8">
                         <p className=" flex gap-2">
-                            New To AnimeFig?
+                            Already Have An Account
                             <Link
                                 className="flex justify-around link link-error"
                                 to="/login"
