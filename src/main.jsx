@@ -4,6 +4,8 @@ import "./index.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Admin from "./component/admin/Admin";
 import Home from "./component/home/Home";
+import Login from "./component/auth/Login";
+import Register from "./component/auth/Register";
 
 const router = createBrowserRouter([
     {
@@ -13,6 +15,15 @@ const router = createBrowserRouter([
             {
                 path: "/",
                 element: <Home />,
+                loader: () => fetch("http://localhost:3000/figures"),
+            },
+            {
+                path: "/login",
+                element: <Login />,
+            },
+            {
+                path: "/register",
+                element: <Register />,
             },
         ],
     },

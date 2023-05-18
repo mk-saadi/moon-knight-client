@@ -4,7 +4,7 @@ import Footer from "../shared/Footer";
 
 const Admin = () => {
     return (
-        <div>
+        <div className="bg-white">
             <Navbar />
             <Outlet />
             <Footer />
