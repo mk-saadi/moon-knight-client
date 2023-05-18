@@ -1,7 +1,29 @@
 import { Link } from "react-router-dom";
 import img from "../../assets/img.png";
+import { useContext, useState } from "react";
+import { AuthContext } from "../authProvider/AuthProvider";
+import { toast } from "react-hot-toast";
 
 const Navbar = () => {
+    const { user, logOut } = useContext(AuthContext);
+    const [showUserName, setShowUserName] = useState(false);
+
+    const handleLogOut = () => {
+        logOut()
+            .then(() => {})
+            .catch((error) => {
+                toast.error(error.message, {
+                    position: "top-center",
+                    autoClose: 4000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                });
+            });
+    };
+
     const navItems = (
         <>
             <li>
@@ -13,7 +35,7 @@ const Navbar = () => {
         </>
     );
     return (
-        <div className="navbar ">
+        <div className="navbar border border-b-[1px]">
             <div className="navbar-start">
                 <div className="dropdown">
                     <label
@@ -57,9 +79,49 @@ const Navbar = () => {
                 <ul className="menu menu-horizontal px-1">{navItems}</ul>
             </div>
             <div className="navbar-end">
-                <Link to="/login">
-                    <button className="btn btn-error text-white rounded-sm">Login</button>
-                </Link>
+                {user?.email ? (
+                    <div className="dropdown dropdown-end rounded-sm drop-shadow-md">
+                        <label
+                            tabIndex={0}
+                            className="btn btn-ghost rounded-btn"
+                        >
+                            <img
+                                className="h-12 w-12 mask mask-circle"
+                                src={user.photoURL}
+                                alt="profile image"
+                                onMouseEnter={() => setShowUserName(true)}
+                                onMouseLeave={() => setShowUserName(false)}
+                                title={showUserName ? user.displayName : ""}
+                            />
+                        </label>
+                        <ul
+                            tabIndex={0}
+                            className="menu dropdown-content p-2 shadow bg-base-100 rounded-sm mt-4 flex flex-col gap-2"
+                        >
+                            <Link>
+                                <button className="btn b rounded-sm text-white">Profile</button>
+                            </Link>
+                            <Link to="/myToys">
+                                <button className="btn  rounded-sm text-white">My Toys</button>
+                            </Link>
+                            <Link to="/addAToys">
+                                <button className="btn  rounded-sm text-white">Add Toy</button>
+                            </Link>
+                            <Link>
+                                <button
+                                    className="btn btn-error rounded-sm text-white"
+                                    onClick={handleLogOut}
+                                >
+                                    Log Out
+                                </button>
+                            </Link>
+                        </ul>
+                    </div>
+                ) : (
+                    <Link to="/login">
+                        <button className="btn btn-error rounded-sm text-white">Login</button>
+                    </Link>
+                )}
             </div>
         </div>
     );

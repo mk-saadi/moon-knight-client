@@ -1,15 +1,70 @@
+import { useContext } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../authProvider/AuthProvider";
+import toast from "react-hot-toast";
+import { getAuth, updateProfile } from "firebase/auth";
+import app from "../../firebase/firebase.config";
+
+const auth = getAuth(app);
 
 const Register = () => {
+    const { newUser } = useContext(AuthContext);
+
     const handleRegister = (event) => {
         event.preventDefault();
 
         const form = event.target;
         const name = form.name.value;
+        const profile = form.profile.files[0];
         const email = form.email.value;
         const password = form.password.value;
 
-        console.log(name, email, password);
+        form.reset();
+
+        if (password.length < 6) {
+            toast.error("password must be at least 6 characters long!", {
+                position: "top-center",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+            });
+            return;
+        }
+
+        newUser(email, password)
+            .then((res) => {
+                const user = res.user;
+                if (user.uid) {
+                    updateProfile(auth.currentUser, {
+                        displayName: name,
+                        photoURL: URL.createObjectURL(profile),
+                    });
+                    toast.success("Account successfully created", {
+                        position: "top-center",
+                        autoClose: 4000,
+                        hideProgressBar: false,
+                        closeOnClick: true,
+                        pauseOnHover: true,
+                        draggable: true,
+                        progress: undefined,
+                    });
+                }
+                console.log(user);
+            })
+            .catch((error) => {
+                toast.error(error.message, {
+                    position: "top-center",
+                    autoClose: 4000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                });
+            });
     };
 
     return (
@@ -29,6 +84,16 @@ const Register = () => {
                             name="name"
                             placeholder="your name"
                             className="input input-bordered bg-white text-gray-600"
+                        />
+                    </div>
+                    <div className="form-control">
+                        <label className="label">
+                            <span className="label-text">Profile</span>
+                        </label>
+                        <input
+                            name="profile"
+                            type="file"
+                            className="file-input file-input-bordered file-input-error w-full max-w-xs"
                         />
                     </div>
                     <div className="form-control">

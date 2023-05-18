@@ -1,10 +1,71 @@
+import { useContext } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../authProvider/AuthProvider";
+import { toast } from "react-hot-toast";
 
 const Login = () => {
+    const { signIn } = useContext(AuthContext);
+
+    const handleLogin = (event) => {
+        event.preventDefault();
+
+        const form = event.target;
+        const email = form.email.value;
+        const password = form.password.value;
+
+        if (password.length < 6) {
+            toast.error("password must be at least 6 characters long!", {
+                position: "top-center",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+            });
+            return;
+        }
+
+        form.reset();
+
+        signIn(email, password)
+            .then((res) => {
+                const user = res.user;
+
+                // navigate(from, { replace: true });
+
+                if (user.uid) {
+                    toast.success("Successfully Logged In", {
+                        position: "top-center",
+                        autoClose: 4000,
+                        hideProgressBar: false,
+                        closeOnClick: true,
+                        pauseOnHover: true,
+                        draggable: true,
+                        progress: undefined,
+                    });
+                }
+            })
+            .catch((error) => {
+                toast.error(error.message, {
+                    position: "top-center",
+                    autoClose: 4000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                });
+            });
+    };
+
     return (
         <div className="hero min-h-screen">
             <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl">
-                <div className="card-body">
+                <form
+                    onSubmit={handleLogin}
+                    className="card-body"
+                >
                     <h2 className="text-5xl font-bold text-center text-error mb-10">Login!</h2>
                     <div className="form-control">
                         <label className="label">
@@ -54,7 +115,7 @@ const Login = () => {
                             </Link>
                         </p>
                     </div>
-                </div>
+                </form>
             </div>
         </div>
     );
