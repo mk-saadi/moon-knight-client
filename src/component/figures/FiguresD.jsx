@@ -21,9 +21,9 @@ const FiguresD = () => {
                     />
                     <p className="text-xs italic text-center">{fig.name}</p>
                 </div>
-                <div className="sm:mr-36">
+                <div className="sm:mr-10 md:mr-36">
                     <div>
-                        <p className="text-xl sm:text-2xl text-gray-800 font-semibold mb-4">
+                        <p className="text-xl sm:text-2xl text-slate-200 font-semibold mb-4">
                             {fig.name}
                         </p>
                         <p className="text-red-600 font-semibold">
@@ -31,7 +31,7 @@ const FiguresD = () => {
                         </p>
                         <p>0.62% cash back</p>
                     </div>
-                    <div className="text-gray-700 mt-10">
+                    <div className="text-slate-300 mt-10">
                         <p>
                             <span className="font-semibold">Product Name:</span> {fig.name}
                         </p>

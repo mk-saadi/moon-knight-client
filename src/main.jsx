@@ -10,6 +10,7 @@ import AuthProvider from "./component/authProvider/AuthProvider";
 import FiguresD from "./component/figures/FiguresD";
 import Category from "./component/home/Category";
 import PrivateRoute from "./component/private/PrivateRoute";
+import Products from "./component/prouducts/Products";
 
 const router = createBrowserRouter([
     {
@@ -34,6 +35,16 @@ const router = createBrowserRouter([
                 element: (
                     <PrivateRoute>
                         <FiguresD />
+                    </PrivateRoute>
+                ),
+                loader: ({ params }) =>
+                    fetch(`https://server-anime-fig-mk-saadi.vercel.app/figures/${params.id}`),
+            },
+            {
+                path: "/products/:id",
+                element: (
+                    <PrivateRoute>
+                        <Products />
                     </PrivateRoute>
                 ),
                 loader: ({ params }) =>

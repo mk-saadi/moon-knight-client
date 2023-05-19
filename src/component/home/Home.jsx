@@ -3,9 +3,14 @@ import { useLoaderData } from "react-router-dom";
 import Banner from "./Banner";
 import image from "../../assets/images/a9ecb6f55a394e209e30c04e61abf159.jpg.webp";
 import Gallerie from "./gallary/Gallerie";
+import Products from "../prouducts/Products";
+import { useState } from "react";
 
 const Home = () => {
     const figures = useLoaderData();
+    const [showAll, setShowAll] = useState(false);
+    // const productsToShow = showAll ? figures : figures.slice(0, 12);
+    const repeatedFigures = [...figures, ...figures]; // Repeat the figures array
 
     const galleryImages = [
         {
@@ -55,6 +60,14 @@ const Home = () => {
         },
     ];
 
+    const handleShowMore = () => {
+        setShowAll(true);
+    };
+
+    const handleShowLess = () => {
+        setShowAll(false);
+    };
+
     return (
         <>
             <div className="relative mx-3 sm:mx-20 mt-14 h-screen">
@@ -75,6 +88,31 @@ const Home = () => {
             </div>
             <main className="mt-16">
                 <Gallerie galleryImages={galleryImages} />
+                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-4 mx-4 sm:mx-20 mt-16">
+                    {repeatedFigures.slice(0, showAll ? repeatedFigures.length : 12).map((figS) => (
+                        <Products
+                            key={figS._id}
+                            figS={figS}
+                        ></Products>
+                    ))}
+                </div>
+                <div className="flex justify-end mr-4 md:mr-28 mt-4">
+                    {showAll ? (
+                        <button
+                            className="btn btn-sm px-6 btn-error text-white rounded-sm"
+                            onClick={handleShowLess}
+                        >
+                            View Less
+                        </button>
+                    ) : (
+                        <button
+                            className="btn btn-sm px-6 btn-success text-white rounded-sm"
+                            onClick={handleShowMore}
+                        >
+                            View More...
+                        </button>
+                    )}
+                </div>
             </main>
             {/* <Tabs>
                 <TabList>

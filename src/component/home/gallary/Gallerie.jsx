@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { useState } from "react";
 import "./image.css";
 import { FaChevronCircleLeft, FaChevronCircleRight, FaRegWindowClose } from "react-icons/fa";
@@ -69,7 +70,7 @@ const Gallerie = ({ galleryImages }) => {
 
             <div className="galleryWrap">
                 {galleryImages
-                    .slice(0, showAllImages ? galleryImages.length : 6)
+                    .slice(0, showAllImages ? galleryImages.length : 5)
                     .map((slide, index) => {
                         return (
                             <div
@@ -87,7 +88,7 @@ const Gallerie = ({ galleryImages }) => {
                     })}
                 {!showAllImages && galleryImages.length > 6 && (
                     <button
-                        className="btn btn-success rounded-sm text-white"
+                        className="btn btn-success rounded-sm text-white w-2/3"
                         onClick={handleShowMore}
                     >
                         Show More
@@ -95,7 +96,7 @@ const Gallerie = ({ galleryImages }) => {
                 )}
                 {showAllImages && (
                     <button
-                        className="btn btn-error rounded-sm text-white"
+                        className="btn btn-error rounded-sm text-white w-2/3"
                         onClick={handleShowFirstSixImages}
                     >
                         Show Less
