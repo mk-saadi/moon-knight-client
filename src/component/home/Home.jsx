@@ -89,12 +89,15 @@ const Home = () => {
             <main className="mt-16">
                 <Gallerie galleryImages={galleryImages} />
                 <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-4 mx-4 sm:mx-20 mt-16">
-                    {repeatedFigures.slice(0, showAll ? repeatedFigures.length : 12).map((figS) => (
-                        <Products
-                            key={figS._id}
-                            figS={figS}
-                        ></Products>
-                    ))}
+                    {repeatedFigures
+                        .slice(0, showAll ? repeatedFigures.length : 12)
+                        .reverse()
+                        .map((figS) => (
+                            <Products
+                                key={figS._id}
+                                figS={figS}
+                            ></Products>
+                        ))}
                 </div>
                 <div className="flex justify-end mr-4 md:mr-28 mt-4">
                     {showAll ? (
