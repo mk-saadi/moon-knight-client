@@ -62,7 +62,11 @@ const router = createBrowserRouter([
             },
             {
                 path: "/figDetails/:id",
-                element: <FigD></FigD>,
+                element: (
+                    <PrivateRoute>
+                        <FigD></FigD>
+                    </PrivateRoute>
+                ),
                 loader: ({ params }) =>
                     fetch(`https://server-anime-fig-mk-saadi.vercel.app/addedFigure/${params.id}`),
             },

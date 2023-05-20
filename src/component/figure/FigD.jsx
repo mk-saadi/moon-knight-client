@@ -1,5 +1,7 @@
 import { BsFillArrowLeftSquareFill } from "react-icons/bs";
 import { useLoaderData, useNavigate } from "react-router-dom";
+import { Rating } from "@smastrom/react-rating";
+import "@smastrom/react-rating/style.css";
 
 const FigD = () => {
     const fig = useLoaderData();
@@ -28,9 +30,15 @@ const FigD = () => {
                             {fig.name}
                         </p>
                         <p className="text-red-600 font-semibold">
-                            US <span className="text-xl">{fig.price}</span>
+                            US <span className="text-xl">${fig.price}</span>
                         </p>
                         <p>0.62% cash back</p>
+                        <div className="my-3">
+                            <Rating
+                                style={{ maxWidth: 150 }}
+                                value={Math.round(fig.rating)}
+                            />
+                        </div>
                     </div>
                     <div className="text-slate-300 mt-10">
                         <p>

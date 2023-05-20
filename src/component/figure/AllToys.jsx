@@ -11,12 +11,14 @@ const AllToys = () => {
         >
             <table className="table table-zebra w-full">
                 <tbody>
-                    {figs.map((fig) => (
-                        <AllToysD
-                            key={fig._id}
-                            fig={fig}
-                        ></AllToysD>
-                    ))}
+                    {figs
+                        .map((fig) => (
+                            <AllToysD
+                                key={fig._id}
+                                fig={fig}
+                            ></AllToysD>
+                        ))
+                        .reverse()}
                 </tbody>
             </table>
         </div>

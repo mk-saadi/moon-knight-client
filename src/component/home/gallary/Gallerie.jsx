@@ -13,19 +13,16 @@ const Gallerie = ({ galleryImages }) => {
         setOpenModal(true);
     };
 
-    // Close Modal
     const handleCloseModal = () => {
         setOpenModal(false);
     };
 
-    // Previous Image
     const prevSlide = () => {
         slideNumber === 0
             ? setSlideNumber(galleryImages.length - 1)
             : setSlideNumber(slideNumber - 1);
     };
 
-    // Next Image
     const nextSlide = () => {
         slideNumber + 1 === galleryImages.length
             ? setSlideNumber(0)
@@ -42,8 +39,8 @@ const Gallerie = ({ galleryImages }) => {
 
     return (
         <div>
-            <p className="text-2xl text-gray-700 text-center mb-6 font-semibold">
-                Our Latest Products
+            <p className="text-2xl text-gray-400 text-center mb-6 font-semibold">
+                Gallery of BEST figures
             </p>
             {openModal && (
                 <div className="sliderWrap">
@@ -70,8 +67,7 @@ const Gallerie = ({ galleryImages }) => {
 
             <div className="galleryWrap">
                 {galleryImages
-                    .slice(0, showAllImages ? galleryImages.length : 5)
-                    .reverse()
+                    .slice(0, showAllImages ? galleryImages.length : 6)
                     .map((slide, index) => {
                         return (
                             <div

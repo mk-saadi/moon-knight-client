@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { BsFillArrowRightSquareFill } from "react-icons/bs";
 import { Link } from "react-router-dom";
 

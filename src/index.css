@@ -2,6 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 *::selection {
-    color: white;
-    background-color: salmon;
+    color: rgb(8, 8, 8);
+    background-color: rgb(111, 196, 249);
 }

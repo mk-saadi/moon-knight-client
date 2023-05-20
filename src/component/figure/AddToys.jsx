@@ -161,6 +161,7 @@ const AddToys = () => {
                             <option className="text-xs">fate/grand order</option>
                             <option className="text-xs">gundam</option>
                             <option className="text-xs">re:zero</option>
+                            <option className="text-xs">genshin impact</option>
                         </select>
                     </div>
                     <div className="pb-10 pt-4">

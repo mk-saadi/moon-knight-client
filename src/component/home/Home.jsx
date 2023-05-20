@@ -77,20 +77,52 @@ const Home = () => {
                 />
 
                 <div className="flex justify-center gap-2 absolute bottom-0  w-full rounded-lg bg-gradient-to-t from-[#000] to-[rgba(21,21,21,0)] shadow-lg">
-                    {figures.slice(0, 4).map((fig) => (
-                        <Banner
-                            key={fig._id}
-                            fig={fig}
-                        ></Banner>
-                    ))}
+                    {figures
+                        .slice(0, 4)
+                        .reverse()
+                        .map((fig) => (
+                            <Banner
+                                key={fig._id}
+                                fig={fig}
+                            ></Banner>
+                        ))}
                 </div>
             </div>
-            <main className="mt-16">
-                <Gallerie galleryImages={galleryImages} />
+            <main className="mt-20">
+                <div className="grid grid-cols-1 md:grid-cols-3 mx-2 md:mx-16 ">
+                    <div>
+                        <h2 className="text-info text-4xl text-center mb-10">
+                            Discover the Magic <br /> of Anime Figures
+                        </h2>
+                        <p className="text-gray-500">
+                            The world of anime figures is a captivating realm that combines art,
+                            storytelling, and craftsmanship. It serves as a gateway for fans to
+                            express their adoration for beloved characters and immerse themselves in
+                            the enchanting worlds they inhabit. At our website, we bring this
+                            extraordinary world directly to collectors and enthusiasts, offering an
+                            extensive range of figures that capture the essence and allure of anime.
+                        </p>
+                        <p className="text-gray-500 mt-4 mb-8">
+                            Our website boasts an extensive and carefully curated collection of
+                            anime figures, ensuring that there is something for every fan. From
+                            iconic characters to the latest releases, we strive to cater to diverse
+                            tastes and preferences. Whether you are a fan of action-packed shonen
+                            series, heartwarming slice-of-life anime, or mesmerizing fantasy
+                            adventures, you'll discover figures that resonate with your interests.
+                        </p>
+                    </div>
+                    <div className="md:col-span-2">
+                        <Gallerie galleryImages={galleryImages} />
+                    </div>
+                </div>
+
+                <h3 className="-mb-12 mt-16 text-2xl ml-4 sm:ml-20 font-bold text-info border-l-2 border-sky-400 pl-4">
+                    Discover Our Latest Merch
+                </h3>
                 <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-4 mx-4 sm:mx-20 mt-16">
                     {repeatedFigures
-                        .slice(0, showAll ? repeatedFigures.length : 12)
                         .reverse()
+                        .slice(0, showAll ? repeatedFigures.length : 12)
                         .map((figS) => (
                             <Products
                                 key={figS._id}
@@ -98,7 +130,7 @@ const Home = () => {
                             ></Products>
                         ))}
                 </div>
-                <div className="flex justify-end mr-4 md:mr-28 mt-4">
+                <div className="flex justify-end mr-4 md:mr-28 mt-4 mb-16">
                     {showAll ? (
                         <button
                             className="btn btn-sm px-6 btn-error text-white rounded-sm"
