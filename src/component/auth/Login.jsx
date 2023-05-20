@@ -106,7 +106,7 @@ const Login = () => {
                         <input
                             type="submit"
                             value="Login"
-                            className="btn btn-error rounded-sm text-white"
+                            className="btn btn-info rounded-sm text-white"
                         />
                     </div>
                     <div className="flex justify-center items-center mt-8">

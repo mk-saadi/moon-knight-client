@@ -15,6 +15,7 @@ import AllToys from "./component/figure/AllToys";
 import MyToys from "./component/figure/MyToys";
 import AddToys from "./component/figure/AddToys";
 import Blog from "./component/blog/Blog";
+import FigD from "./component/figure/FigD";
 
 const router = createBrowserRouter([
     {
@@ -57,6 +58,13 @@ const router = createBrowserRouter([
             {
                 path: "/allToys",
                 element: <AllToys />,
+                loader: () => fetch("https://server-anime-fig-mk-saadi.vercel.app/addedFigure"),
+            },
+            {
+                path: "/figDetails/:id",
+                element: <FigD></FigD>,
+                loader: ({ params }) =>
+                    fetch(`https://server-anime-fig-mk-saadi.vercel.app/addedFigure/${params.id}`),
             },
             {
                 path: "/myToys",

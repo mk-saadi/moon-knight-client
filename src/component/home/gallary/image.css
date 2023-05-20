@@ -42,23 +42,27 @@
 .btnPrev:hover,
 .btnClose:hover {
     opacity: 1;
+    transition: 0.3s linear;
 }
 
 .sliderWrap .btnClose {
     top: 40px;
     right: 40px;
+    font-size: 2em;
 }
 
 .sliderWrap .btnPrev {
     top: 50%;
     transform: translateY(-50%);
     left: 40px;
+    font-size: 2em;
 }
 
 .sliderWrap .btnNext {
     top: 50%;
     transform: translateY(-50%);
     right: 40px;
+    font-size: 2em;
 }
 
 .fullScreenImage {

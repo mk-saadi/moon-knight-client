@@ -13,12 +13,13 @@ const AddToys = () => {
         const img = form.img.value;
         const email = form.email.value;
         const name = form.name.value;
-        const price = form.price.value;
-        const quantity = form.quantity.value;
+        const price = parseFloat(form.price.value);
+        const quantity = parseFloat(form.quantity.value);
         const description = form.description.value;
         const seller = form.seller.value;
         const Manufacturer = form.Manufacturer.value;
         const category = form.category.value;
+        const rating = parseFloat(form.ratings.value);
 
         const figure = {
             img: img,
@@ -30,6 +31,7 @@ const AddToys = () => {
             description: description,
             Manufacturer: Manufacturer,
             category: category,
+            rating: rating,
         };
 
         fetch("https://server-anime-fig-mk-saadi.vercel.app/addedFigure", {
@@ -53,6 +55,7 @@ const AddToys = () => {
                         progress: undefined,
                     });
                 }
+                form.reset();
             });
     };
 
@@ -129,7 +132,7 @@ const AddToys = () => {
                         </div>
                         <div className="form-control">
                             <input
-                                type="number"
+                                type="text"
                                 name="ratings"
                                 required
                                 placeholder="rating (number)"
@@ -156,9 +159,7 @@ const AddToys = () => {
                                 products sub-category
                             </option>
                             <option className="text-xs">fate/grand order</option>
-                            <option className="text-xs">saekano</option>
                             <option className="text-xs">gundam</option>
-                            <option className="text-xs">arknight</option>
                             <option className="text-xs">re:zero</option>
                         </select>
                     </div>
@@ -166,7 +167,7 @@ const AddToys = () => {
                         <textarea
                             name="description"
                             required
-                            className="text-slate-200 textarea textarea-error bg-gray-600 w-full min-h-[10rem]"
+                            className="text-slate-200 textarea textarea-error rounded-sm bg-gray-600 w-full min-h-[10rem]"
                             placeholder="Product Description"
                         ></textarea>
                     </div>

@@ -71,6 +71,7 @@ const Gallerie = ({ galleryImages }) => {
             <div className="galleryWrap">
                 {galleryImages
                     .slice(0, showAllImages ? galleryImages.length : 5)
+                    .reverse()
                     .map((slide, index) => {
                         return (
                             <div
