@@ -88,7 +88,7 @@ const Gallerie = ({ galleryImages }) => {
                     })}
                 {!showAllImages && galleryImages.length > 6 && (
                     <button
-                        className="btn btn-success rounded-sm text-white w-2/3"
+                        className="btn btn-info rounded-sm text-white w-2/3"
                         onClick={handleShowMore}
                     >
                         Show More

@@ -9,8 +9,7 @@ import { useState } from "react";
 const Home = () => {
     const figures = useLoaderData();
     const [showAll, setShowAll] = useState(false);
-    // const productsToShow = showAll ? figures : figures.slice(0, 12);
-    const repeatedFigures = [...figures, ...figures]; // Repeat the figures array
+    const repeatedFigures = [...figures, ...figures];
 
     const galleryImages = [
         {
@@ -109,7 +108,7 @@ const Home = () => {
                         </button>
                     ) : (
                         <button
-                            className="btn btn-sm px-6 btn-success text-white rounded-sm"
+                            className="btn btn-sm px-6 btn-info text-white rounded-sm"
                             onClick={handleShowMore}
                         >
                             View More...

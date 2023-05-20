@@ -29,15 +29,35 @@ const Navbar = () => {
 
     const navItems = (
         <>
-            <li>
-                <Link to="/">Home</Link>
-            </li>
-            <li>
-                <Link to="/blog">Blog</Link>
-            </li>
-            <li>
-                <Link to="/allToys">All Toys</Link>
-            </li>
+            <Link to="/">
+                <button className="btn btn-sm bg-transparent border-0 hover:bg-transparent focus:bg-transparent">
+                    Home
+                </button>{" "}
+            </Link>
+            <Link to="/blog">
+                <button className="btn btn-sm bg-transparent border-0 hover:bg-transparent focus:bg-transparent">
+                    Blog
+                </button>{" "}
+            </Link>
+            <Link to="/allToys">
+                <button className="btn btn-sm bg-transparent border-0 hover:bg-transparent focus:bg-transparent">
+                    All Figures
+                </button>
+            </Link>
+            {user && (
+                <>
+                    <Link to="/myToys">
+                        <button className="btn btn-sm bg-transparent border-0 hover:bg-transparent focus:bg-transparent">
+                            My Figures
+                        </button>
+                    </Link>
+                    <Link to="/addAToys">
+                        <button className="btn btn-sm bg-transparent border-0 hover:bg-transparent focus:bg-transparent">
+                            Add New Figures
+                        </button>
+                    </Link>
+                </>
+            )}
         </>
     );
     return (
@@ -90,23 +110,13 @@ const Navbar = () => {
                             </label>
                             <ul
                                 tabIndex={0}
-                                className="menu dropdown-content p-2 w-36 shadow bg-base-100 rounded-sm mt-4 flex flex-col gap-2 z-50"
+                                className="menu dropdown-content p-2 w-48 shadow bg-base-100 rounded-sm mt-4 flex flex-col gap-2 z-50"
                             >
                                 <p className="text-sm">{user.displayName}</p>
                                 <hr className="mb-3" />
-                                <Link>
-                                    <button className="btn b rounded-sm text-white w-full">
+                                <Link to="#">
+                                    <button className="btn b rounded-sm text-white w-full btn-sm text-xs sm:text-sm">
                                         Profile
-                                    </button>
-                                </Link>
-                                <Link to="/myToys">
-                                    <button className="btn  rounded-sm text-white w-full">
-                                        My Toys
-                                    </button>
-                                </Link>
-                                <Link to="/addAToys">
-                                    <button className="btn  rounded-sm text-white w-full">
-                                        Add Toy
                                     </button>
                                 </Link>
                                 <Link>
@@ -131,17 +141,32 @@ const Navbar = () => {
                     <input
                         type="text"
                         placeholder="Search Products"
-                        className="input input-bordered input-error w-2/3 rounded-none rounded-l-sm"
+                        className="input input-bordered input-info w-2/3 rounded-none rounded-l-sm"
                     />
-                    <button className="btn btn-error rounded-r-sm rounded-none">
+                    <button className="btn btn-info rounded-r-sm rounded-none">
                         <FaSearch />
                     </button>
                     <div className="text-white text-sm flex ml-2 items-center gap-2">
-                        <p>Sale!</p>
+                        <a
+                            href="#"
+                            className="opacity-60 hover:opacity-100"
+                        >
+                            Sale!
+                        </a>
                         <IoIosArrowForward />
-                        <p>New Items</p>
+                        <a
+                            href="#"
+                            className="opacity-60 hover:opacity-100"
+                        >
+                            New Items
+                        </a>
                         <IoIosArrowForward />
-                        <p>Best Seller</p>
+                        <a
+                            href="#"
+                            className="opacity-60 hover:opacity-100"
+                        >
+                            Best Seller
+                        </a>
                         <IoIosArrowForward />
                     </div>
                     <button

@@ -11,9 +11,10 @@ import FiguresD from "./component/figures/FiguresD";
 import Category from "./component/home/Category";
 import PrivateRoute from "./component/private/PrivateRoute";
 import Products from "./component/prouducts/Products";
-import AllToys from "./component/toys/AllToys";
-import MyToys from "./component/toys/MyToys";
-import AddToys from "./component/toys/AddToys";
+import AllToys from "./component/figure/AllToys";
+import MyToys from "./component/figure/MyToys";
+import AddToys from "./component/figure/AddToys";
+import Blog from "./component/blog/Blog";
 
 const router = createBrowserRouter([
     {
@@ -59,7 +60,17 @@ const router = createBrowserRouter([
             },
             {
                 path: "/myToys",
-                element: <MyToys />,
+                element: (
+                    <PrivateRoute>
+                        <MyToys />
+                    </PrivateRoute>
+                ),
+                // loader: ({ params }) =>
+                //     fetch(`https://server-anime-fig.vercel.app/addedFigure/${params.id}`),
+            },
+            {
+                path: "/blog",
+                element: <Blog />,
             },
             {
                 path: "/addAToys",
