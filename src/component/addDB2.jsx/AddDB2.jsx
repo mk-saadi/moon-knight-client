@@ -2,38 +2,37 @@ import { useContext } from "react";
 import { AuthContext } from "../authProvider/AuthProvider";
 import { toast } from "react-hot-toast";
 
-const AddToys = () => {
+const AddDB2 = () => {
     const { user } = useContext(AuthContext);
 
-    const handlePost = (event) => {
+    const handlePost2 = (event) => {
         event.preventDefault();
 
         const form = event.target;
+
         const img = form.img.value;
-        const email = form.email.value;
         const name = form.name.value;
-        const price = parseFloat(form.price.value);
-        const quantity = parseFloat(form.quantity.value);
+        const price = form.price.value;
+        const quantity = form.quantity.value;
         const description = form.description.value;
         const seller = form.seller.value;
         const Manufacturer = form.Manufacturer.value;
-        const category = form.category.value;
-        const rating = parseFloat(form.ratings.value);
+        const category_id = form.category.value;
+        const ratings = parseFloat(form.ratings.value);
 
         const figure = {
             img: img,
-            email: email,
             name: name,
             price: price,
             quantity: quantity,
             seller: seller,
             description: description,
             Manufacturer: Manufacturer,
-            category: category,
-            rating: rating,
+            category_id: category_id,
+            ratings: ratings,
         };
 
-        fetch("https://server-anime-fig-mk-saadi.vercel.app/addedFigure", {
+        fetch("https://server-anime-fig.vercel.app/figures", {
             method: "POST",
             headers: {
                 "content-type": "application/json",
@@ -61,15 +60,14 @@ const AddToys = () => {
     return (
         <div className="bg-gray-800">
             <form
-                onSubmit={handlePost}
+                onSubmit={handlePost2}
                 className="px-1 my-20"
             >
                 <div className="relative card-body mx-0 px-2 sm:px-6 bg-base-300 rounded-md md:px-24">
                     <p className="text-2xl text-error font-bold text-left">
-                        Add New Figure To Database
+                        Add New Figure To Second Database
                     </p>
                     <div className="grid grid-cols-2 sm:grid-cols-2 gap-2 md:gap-4 pt-10">
-                        {/* seller */}
                         <div className="form-control">
                             <input
                                 type="text"
@@ -80,7 +78,6 @@ const AddToys = () => {
                                 className="text-sm sm:text-base text-slate-100 input input-bordered bg-gray-600 rounded-sm"
                             />
                         </div>
-                        {/* last name */}
                         <div className="form-control">
                             <input
                                 type="text"
@@ -90,18 +87,6 @@ const AddToys = () => {
                                 className="text-sm sm:text-base text-slate-100 input input-bordered bg-gray-600 rounded-sm"
                             />
                         </div>
-                        {/* phone */}
-                        <div className="form-control">
-                            <input
-                                type="email"
-                                name="email"
-                                required
-                                defaultValue={user?.email}
-                                placeholder="seller's email"
-                                className="text-sm sm:text-base text-slate-100 input input-bordered bg-gray-600 rounded-sm"
-                            />
-                        </div>
-                        {/* email */}
                         <div className="form-control">
                             <input
                                 type="text"
@@ -148,7 +133,7 @@ const AddToys = () => {
                             />
                         </div>
                         <select
-                            className="select select-info  rounded-sm bg-gray-600"
+                            className="select select-error  rounded-sm bg-gray-600"
                             name="category"
                         >
                             <option
@@ -157,17 +142,43 @@ const AddToys = () => {
                             >
                                 products sub-category
                             </option>
-                            <option className="text-xs">Nendoroid</option>
-                            <option className="text-xs">Figma</option>
-                            <option className="text-xs">Scale Figures</option>
-                            <option className="text-xs">Bishoujo Figures</option>
+                            <option
+                                className="text-xs"
+                                title="fate/grand order"
+                            >
+                                1
+                            </option>
+                            <option
+                                className="text-xs"
+                                title="saekano"
+                            >
+                                2
+                            </option>
+                            <option
+                                className="text-xs"
+                                title="gundam"
+                            >
+                                3
+                            </option>
+                            <option
+                                className="text-xs"
+                                title="re:zero"
+                            >
+                                4
+                            </option>
+                            <option
+                                className="text-xs"
+                                title="arknight"
+                            >
+                                5
+                            </option>
                         </select>
                     </div>
                     <div className="pb-10 pt-4">
                         <textarea
                             name="description"
                             required
-                            className="text-slate-200 textarea textarea-info rounded-sm bg-gray-600 w-full min-h-[10rem]"
+                            className="text-slate-200 textarea textarea-error rounded-sm bg-gray-600 w-full min-h-[10rem]"
                             placeholder="Product Description"
                         ></textarea>
                     </div>
@@ -182,4 +193,4 @@ const AddToys = () => {
     );
 };
 
-export default AddToys;
+export default AddDB2;

@@ -16,6 +16,8 @@ import MyToys from "./component/figure/MyToys";
 import AddToys from "./component/figure/AddToys";
 import Blog from "./component/blog/Blog";
 import FigD from "./component/figure/FigD";
+import AddDB2 from "./component/addDB2.jsx/AddDB2";
+import EditMyToys from "./component/figure/EditMyToys";
 
 const router = createBrowserRouter([
     {
@@ -91,6 +93,24 @@ const router = createBrowserRouter([
                         <AddToys />
                     </PrivateRoute>
                 ),
+            },
+            {
+                path: "/addDB2",
+                element: (
+                    <PrivateRoute>
+                        <AddDB2 />
+                    </PrivateRoute>
+                ),
+            },
+            {
+                path: "/editMyToys/:id",
+                element: (
+                    <PrivateRoute>
+                        <EditMyToys />
+                    </PrivateRoute>
+                ),
+                loader: ({ params }) =>
+                    fetch(`https://server-anime-fig-mk-saadi.vercel.app/addedFigure/${params.id}`),
             },
             {
                 path: "/category/:id",

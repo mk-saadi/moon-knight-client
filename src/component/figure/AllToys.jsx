@@ -6,8 +6,8 @@ const AllToys = () => {
 
     return (
         <div
-            style={{ width: "95vw" }}
-            className="my-16 mx-auto"
+            style={{ width: "98vw" }}
+            className="my-16 mx-auto min-h-screen"
         >
             <table className="table table-zebra w-full">
                 <tbody>

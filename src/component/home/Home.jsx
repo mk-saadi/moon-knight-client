@@ -1,7 +1,7 @@
 import { useLoaderData } from "react-router-dom";
 // import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import Banner from "./Banner";
-import image from "../../assets/images/a9ecb6f55a394e209e30c04e61abf159.jpg.webp";
+import image from "../../assets/background.jpg";
 import Gallerie from "./gallary/Gallerie";
 import Products from "../prouducts/Products";
 import { useState } from "react";
@@ -78,7 +78,7 @@ const Home = () => {
 
                 <div className="flex justify-center gap-2 absolute bottom-0  w-full rounded-lg bg-gradient-to-t from-[#000] to-[rgba(21,21,21,0)] shadow-lg">
                     {figures
-                        .slice(0, 4)
+                        .slice(20, 24)
                         .reverse()
                         .map((fig) => (
                             <Banner

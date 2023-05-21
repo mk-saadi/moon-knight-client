@@ -119,6 +119,11 @@ const Navbar = () => {
                                         Profile
                                     </button>
                                 </Link>
+                                <Link to="/addDB2">
+                                    <button className="btn b rounded-sm text-white w-full btn-sm text-xs sm:text-sm">
+                                        Add To 2nd DB
+                                    </button>
+                                </Link>
                                 <Link>
                                     <button
                                         className="btn btn-error rounded-sm text-white w-full"

@@ -1,14 +1,7 @@
 import "./footer.css";
 import image from "../../assets/img.png";
 import gur from "../../assets/gur.png";
-import {
-    FaExternalLinkSquareAlt,
-    FaFacebook,
-    FaFacebookSquare,
-    FaInstagramSquare,
-    FaLinkedin,
-    FaTwitterSquare,
-} from "react-icons/fa";
+import { FaFacebookSquare, FaInstagramSquare, FaLinkedin, FaTwitterSquare } from "react-icons/fa";
 
 const Footer = () => {
     return (
@@ -37,12 +30,12 @@ const Footer = () => {
                         <img
                             src={image}
                             alt=""
-                            className="h-28 w-28 drop-shadow-md"
+                            className="h-24 w-24 drop-shadow-md"
                         />
                         <p>
-                            ACME Industries Ltd.
+                            AnimeFig Private Inc.
                             <br />
-                            Providing reliable tech since 1992
+                            Shipping Exquisite Merch SInce 2009.
                         </p>
                     </div>
                     <div className="order-3">

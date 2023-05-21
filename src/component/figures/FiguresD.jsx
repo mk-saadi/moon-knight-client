@@ -10,11 +10,10 @@ const FiguresD = () => {
     };
 
     return (
-        <div className="mx-2">
-            <div className="mt-14 grid grid-cols-1 sm:grid-cols-2 gap-2">
+        <div className="mx-2 my-16">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                 <div className="mx-4">
                     <img
-                        // style={{ height: "100%", width: "400px" }}
                         src={fig.img}
                         alt=""
                         className="h-[350px] sm:h-[500px] sm:w-auto object-cover rounded-lg mx-auto"
