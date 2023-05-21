@@ -25,7 +25,7 @@ const Footer = () => {
                         beautifully designed products that are always authentic.
                     </p>
                 </div>
-                <footer className="footer p-10 bg-gray-800 bg-opacity-70">
+                <footer className="footer p-10 bg-gray-800 bg-opacity-70 text-gray-400">
                     <div>
                         <img
                             src={image}

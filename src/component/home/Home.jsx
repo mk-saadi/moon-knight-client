@@ -1,14 +1,16 @@
-import { useLoaderData } from "react-router-dom";
-// import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
+import { Link, useLoaderData } from "react-router-dom";
 import Banner from "./Banner";
 import image from "../../assets/background.jpg";
 import Gallerie from "./gallary/Gallerie";
 import Products from "../prouducts/Products";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import ShowFig from "../showFig/ShowFig";
+import Categoriies from "../category/Categoriies";
 
 const Home = () => {
     const figures = useLoaderData();
     const [showAll, setShowAll] = useState(false);
+    const [showFig, setFig] = useState([]);
     const repeatedFigures = [...figures, ...figures];
 
     const galleryImages = [
@@ -59,6 +61,12 @@ const Home = () => {
         },
     ];
 
+    useEffect(() => {
+        fetch("https://server-anime-fig-mk-saadi.vercel.app/addedFigure")
+            .then((res) => res.json())
+            .then((data) => setFig(data));
+    }, []);
+
     const handleShowMore = () => {
         setShowAll(true);
     };
@@ -89,6 +97,12 @@ const Home = () => {
                 </div>
             </div>
             <main className="mt-20">
+                <div
+                    className="mb-16"
+                    style={{ minHeight: "810px" }}
+                >
+                    <Categoriies />
+                </div>
                 <div className="grid grid-cols-1 md:grid-cols-3 mx-2 md:mx-16 ">
                     <div>
                         <h2 className="text-info text-4xl text-center mb-10">
@@ -116,8 +130,8 @@ const Home = () => {
                     </div>
                 </div>
 
-                <h3 className="-mb-12 mt-16 text-2xl ml-4 sm:ml-20 font-bold text-info border-l-2 border-sky-400 pl-4">
-                    Discover Our Latest Merch
+                <h3 className="-mb-12 mt-20 text-2xl ml-4 sm:ml-20 font-bold text-info border-l-2 border-sky-400 pl-4">
+                    Best Selling Merch
                 </h3>
                 <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-4 mx-4 sm:mx-20 mt-16">
                     {repeatedFigures
@@ -147,26 +161,25 @@ const Home = () => {
                         </button>
                     )}
                 </div>
+                <h3 className="mt-20 text-2xl ml-4 sm:ml-20 font-bold text-info border-l-2 border-sky-400 pl-4">
+                    Discover Latest Merch
+                </h3>
+                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-4 mx-4 sm:mx-20">
+                    {showFig.slice(0, 6).map((fi) => (
+                        <ShowFig
+                            key={fi._id}
+                            fi={fi}
+                        ></ShowFig>
+                    ))}
+                </div>
+                <div className="flex justify-end mr-4 md:mr-28 mt-4 mb-20">
+                    <Link to="/allToys">
+                        <button className="btn btn-sm px-6 btn-info text-white rounded-sm">
+                            Show All
+                        </button>
+                    </Link>
+                </div>
             </main>
-            {/* <Tabs>
-                <TabList>
-                    <Tab>
-                        <Link to={`/category/${figures.category_id}`}>
-                            <button>g</button>
-                        </Link>
-                    </Tab>
-                </TabList>
-
-                <TabPanel>
-                    <h2>Any content 1</h2>
-                </TabPanel>
-                <TabPanel>
-                    <h2>Any content 2</h2>
-                </TabPanel>
-                <TabPanel>
-                    <h2>arknight</h2>
-                </TabPanel>
-            </Tabs> */}
         </>
     );
 };

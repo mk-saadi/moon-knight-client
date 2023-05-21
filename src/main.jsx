@@ -8,7 +8,6 @@ import Login from "./component/auth/Login";
 import Register from "./component/auth/Register";
 import AuthProvider from "./component/authProvider/AuthProvider";
 import FiguresD from "./component/figures/FiguresD";
-import Category from "./component/home/Category";
 import PrivateRoute from "./component/private/PrivateRoute";
 import Products from "./component/prouducts/Products";
 import AllToys from "./component/figure/AllToys";
@@ -18,10 +17,14 @@ import Blog from "./component/blog/Blog";
 import FigD from "./component/figure/FigD";
 import AddDB2 from "./component/addDB2.jsx/AddDB2";
 import EditMyToys from "./component/figure/EditMyToys";
+import ErrorPage from "./component/errorPage/ErrorPage";
+import Categoriies from "./component/category/Categoriies";
+import CategoryD from "./component/category/CategoryD";
 
 const router = createBrowserRouter([
     {
         path: "/",
+        errorElement: <ErrorPage />,
         element: <Admin></Admin>,
         children: [
             {
@@ -79,8 +82,6 @@ const router = createBrowserRouter([
                         <MyToys />
                     </PrivateRoute>
                 ),
-                // loader: ({ params }) =>
-                //     fetch(`https://server-anime-fig.vercel.app/addedFigure/${params.id}`),
             },
             {
                 path: "/blog",
@@ -113,10 +114,14 @@ const router = createBrowserRouter([
                     fetch(`https://server-anime-fig-mk-saadi.vercel.app/addedFigure/${params.id}`),
             },
             {
-                path: "/category/:id",
-                element: <Category />,
+                path: "/category",
+                element: <Categoriies />,
+            },
+            {
+                path: "/categoryD/:id",
+                element: <CategoryD />,
                 loader: ({ params }) =>
-                    fetch(`https://server-anime-fig.vercel.app/figurein/${params.id}`),
+                    fetch(`https://server-anime-fig.vercel.app/addedFigure/${params.id}`),
             },
         ],
     },

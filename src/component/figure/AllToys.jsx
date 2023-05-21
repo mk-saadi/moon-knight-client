@@ -38,26 +38,27 @@ const AllToys = () => {
                     placeholder="Search by name..."
                     value={searchQuery}
                     onChange={handleSearch}
-                    className="input input-bordered input-info w-full rounded-none rounded-l-sm"
+                    className="input input-bordered input-accent w-full rounded-none rounded-l-sm"
                 />
-                <button className="btn btn-info rounded-r-sm rounded-none">
+                <button className="btn btn-accent rounded-r-sm rounded-none">
                     <FaSearch />
                 </button>
             </div>
             {/* sort */}
-            <div className="mb-4">
-                <button
-                    onClick={handleSort}
-                    className="btn btn-accent rounded-sm"
-                >
-                    Sort
-                    <TbArrowsSort /> {sortOrder === "asc" ? "" : ""}
-                </button>
-            </div>
+
             <div
                 style={{ width: "98vw" }}
                 className="my-16 overflow-x-auto min-h-screen mx-auto"
             >
+                <div className="mb-0 flex justify-end">
+                    <button
+                        onClick={handleSort}
+                        className="btn btn-accent rounded-sm btn-sm flex gap-1 items-center"
+                    >
+                        Sort
+                        <TbArrowsSort className="text-lg" /> {sortOrder === "asc" ? "" : ""}
+                    </button>
+                </div>
                 <table className="table table-zebra w-full">
                     <tbody>
                         {sortedFigs

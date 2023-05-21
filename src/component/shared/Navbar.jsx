@@ -36,7 +36,7 @@ const Navbar = () => {
             <Link to="/blog">
                 <button className="btn btn-sm bg-transparent border-0 hover:bg-transparent focus:bg-transparent">
                     Blog
-                </button>{" "}
+                </button>
             </Link>
             <Link to="/allToys">
                 <button className="btn btn-sm bg-transparent border-0 hover:bg-transparent focus:bg-transparent">
@@ -46,12 +46,12 @@ const Navbar = () => {
             {user && (
                 <>
                     <Link to="/myToys">
-                        <button className="btn btn-sm bg-transparent border-0 hover:bg-transparent focus:bg-transparent">
+                        <button className="btn btn-sm bg-transparent border-0 hover:bg-transparent focus:bg-transparent text-accent">
                             My Figures
                         </button>
                     </Link>
                     <Link to="/addAToys">
-                        <button className="btn btn-sm bg-transparent border-0 hover:bg-transparent focus:bg-transparent">
+                        <button className="btn btn-sm bg-transparent border-0 hover:bg-transparent focus:bg-transparent text-accent">
                             Add New Figures
                         </button>
                     </Link>
