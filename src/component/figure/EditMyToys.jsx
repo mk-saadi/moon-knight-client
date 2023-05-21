@@ -1,3 +1,4 @@
+import { toast } from "react-hot-toast";
 import { BsFillArrowLeftSquareFill } from "react-icons/bs";
 import { useLoaderData, useNavigate } from "react-router-dom";
 
@@ -6,6 +7,7 @@ const EditMyToys = () => {
     const navigate = useNavigate();
 
     const {
+        _id,
         img,
         email,
         name,
@@ -47,6 +49,29 @@ const EditMyToys = () => {
         };
 
         console.log(figure);
+
+        fetch(`https://server-anime-fig-mk-saadi.vercel.app/addedFigure/${_id}`, {
+            method: "PUT",
+            headers: {
+                "content-type": "application/json",
+            },
+            body: JSON.stringify(figure),
+        })
+            .then((res) => {
+                if (!res.ok) {
+                    throw new Error("Network response was not ok");
+                }
+                return res.json();
+            })
+            .then((data) => {
+                if (data.modifiedCount > 0) {
+                    toast.success("Figure modified successfully");
+                }
+            })
+            .catch((error) => {
+                console.error("Error:", error);
+                toast.error("An error occurred while modifying the figure");
+            });
     };
 
     const handleGoBack = () => {

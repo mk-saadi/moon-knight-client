@@ -18,6 +18,13 @@ const Admin = () => {
                         color: "#713200",
                         fontWeight: "bolder",
                     },
+                    success: {
+                        duration: 3000,
+                        theme: {
+                            primary: "green",
+                            secondary: "blue",
+                        },
+                    },
                 }}
             />
         </div>
