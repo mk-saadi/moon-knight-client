@@ -29,7 +29,7 @@ const AllToysD = ({ fig }) => {
             </td>
             <td>
                 <Link to={`/figDetails/${fig._id}`}>
-                    <button className="btn btn-sm px-6 btn-info rounded-sm text-white text-xs flex justify-center items-center gap-2 flex-nowrap">
+                    <button className="btn btn-sm btn-info rounded-sm text-white text-xs flex justify-center items-center gap-2 flex-nowrap">
                         Details <BsFillArrowRightSquareFill />
                     </button>
                 </Link>
