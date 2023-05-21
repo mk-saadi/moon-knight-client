@@ -5,7 +5,6 @@ import { AuthContext } from "../authProvider/AuthProvider";
 import { toast } from "react-hot-toast";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { FaSearch } from "react-icons/fa";
-import { IoIosArrowForward, IoIosCart } from "react-icons/io";
 
 const Navbar = () => {
     const { user, logOut } = useContext(AuthContext);
@@ -27,7 +26,7 @@ const Navbar = () => {
             });
     };
 
-    const navItems = (
+    const navMenu = (
         <>
             <Link to="/">
                 <button className="btn btn-sm bg-transparent border-0 hover:bg-transparent focus:bg-transparent">
@@ -75,7 +74,7 @@ const Navbar = () => {
                             tabIndex={0}
                             className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-sm w-52"
                         >
-                            {navItems}
+                            {navMenu}
                         </ul>
                     </div>
                     <Link
@@ -90,7 +89,7 @@ const Navbar = () => {
                     </Link>
                 </div>
                 <div className="navbar-center hidden lg:flex">
-                    <ul className="menu menu-horizontal px-1">{navItems}</ul>
+                    <ul className="menu menu-horizontal px-1">{navMenu}</ul>
                 </div>
                 <div className="navbar-end sm:pr-6 pr-2">
                     {user ? (
@@ -139,47 +138,6 @@ const Navbar = () => {
                             <button className="btn btn-info rounded-sm text-white">Login</button>
                         </Link>
                     )}
-                </div>
-            </div>
-            <div className="px-4 sm:px-10 py-2 bg-blue-400">
-                <div className="flex items-center">
-                    <input
-                        type="text"
-                        placeholder="Search Products"
-                        className="input input-bordered input-info w-2/3 rounded-none rounded-l-sm"
-                    />
-                    <button className="btn btn-info rounded-r-sm rounded-none">
-                        <FaSearch />
-                    </button>
-                    <div className="text-white text-sm flex ml-2 items-center gap-2">
-                        <a
-                            href="#"
-                            className="opacity-60 hover:opacity-100"
-                        >
-                            Sale!
-                        </a>
-                        <IoIosArrowForward />
-                        <a
-                            href="#"
-                            className="opacity-60 hover:opacity-100"
-                        >
-                            New Items
-                        </a>
-                        <IoIosArrowForward />
-                        <a
-                            href="#"
-                            className="opacity-60 hover:opacity-100"
-                        >
-                            Best Seller
-                        </a>
-                        <IoIosArrowForward />
-                    </div>
-                    <button
-                        className="text-gray-800 mx-2 text-2xl"
-                        title="go to cart"
-                    >
-                        <IoIosCart />
-                    </button>
                 </div>
             </div>
             <div className="bg-blue-300 sm:flex grid grid-cols-2 justify-center text-sm text-white shadow-md">

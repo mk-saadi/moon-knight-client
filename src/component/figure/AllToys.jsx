@@ -2,6 +2,7 @@ import { useLoaderData } from "react-router-dom";
 import AllToysD from "./AllToysD";
 import { useState } from "react";
 import { TbArrowsSort } from "react-icons/tb";
+import { FaSearch } from "react-icons/fa";
 
 const AllToys = () => {
     const figs = useLoaderData();
@@ -30,15 +31,20 @@ const AllToys = () => {
 
     return (
         <>
-            <div className="mb-4">
+            {/* search */}
+            <div className="px-4 sm:px-10 py-2 bg-blue-400 flex flex-nowrap">
                 <input
                     type="text"
                     placeholder="Search by name..."
                     value={searchQuery}
                     onChange={handleSearch}
-                    className="input input-bordered w-full"
+                    className="input input-bordered input-info w-full rounded-none rounded-l-sm"
                 />
+                <button className="btn btn-info rounded-r-sm rounded-none">
+                    <FaSearch />
+                </button>
             </div>
+            {/* sort */}
             <div className="mb-4">
                 <button
                     onClick={handleSort}
