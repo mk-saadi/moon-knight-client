@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 import { BsFillArrowRightSquareFill } from "react-icons/bs";
 import { Link } from "react-router-dom";
+import { RiEditBoxFill } from "react-icons/ri";
 
 const MyToysD = ({ fig }) => {
     return (
@@ -27,6 +28,7 @@ const MyToysD = ({ fig }) => {
             <td>
                 <p>$ {fig.price}</p>
             </td>
+            {/* todo: delete operation here */}
             <td>
                 <Link to={`/figDetails/${fig._id}`}>
                     <button className="btn btn-sm px-6 btn-info rounded-sm text-white text-xs flex justify-center items-center gap-2">
@@ -36,8 +38,8 @@ const MyToysD = ({ fig }) => {
             </td>
             <td>
                 <Link to={`/editMyToys/${fig._id}`}>
-                    <button className="btn btn-sm px-6 btn-info rounded-sm text-white text-xs flex justify-center items-center gap-2">
-                        Edit <BsFillArrowRightSquareFill />
+                    <button className="btn btn-sm px-6 btn-info rounded-sm text-white text-xs flex justify-center items-center gap-2 flex-nowrap">
+                        Edit <RiEditBoxFill />
                     </button>
                 </Link>
             </td>

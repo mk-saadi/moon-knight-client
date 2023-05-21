@@ -136,7 +136,7 @@ const Navbar = () => {
                         </div>
                     ) : (
                         <Link to="/login">
-                            <button className="btn btn-error rounded-sm text-white">Login</button>
+                            <button className="btn btn-info rounded-sm text-white">Login</button>
                         </Link>
                     )}
                 </div>
