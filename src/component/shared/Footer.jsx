@@ -11,7 +11,7 @@ const Footer = () => {
                     <img
                         src={gur}
                         alt=""
-                        className="h-24 mx-auto w-24 grayscale"
+                        className="h-24 mx-auto w-24 grayscale select-none pointer-events-none"
                     />
                     <h4 className="text-2xl mb-6 font-bold">Authenticity Guaranteed</h4>
                     <p className="text-xs sm:text-sm text-gray-400">
