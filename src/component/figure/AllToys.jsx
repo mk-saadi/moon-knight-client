@@ -40,7 +40,7 @@ const AllToys = () => {
                     onChange={handleSearch}
                     className="input input-bordered input-accent w-full rounded-none rounded-l-sm"
                 />
-                <button className="btn btn-accent rounded-r-sm rounded-none">
+                <button className="btn btn-accent rounded-r-sm rounded-none no-animation">
                     <FaSearch />
                 </button>
             </div>
@@ -48,7 +48,7 @@ const AllToys = () => {
             <div className="mb-0 mt-16 flex justify-end">
                 <button
                     onClick={handleSort}
-                    className="btn btn-accent rounded-sm sm:btn-sm btn-xs flex gap-1 mr-1 sm:mr-2 md:mr-2  items-center"
+                    className="btn btn-accent rounded-sm sm:btn-sm btn-xs flex gap-1 mr-1 sm:mr-2 md:mr-2  items-center no-animation"
                 >
                     Sort By Price
                     <TbArrowsSort className="text-lg" /> {sortOrder === "asc" ? "" : ""}
