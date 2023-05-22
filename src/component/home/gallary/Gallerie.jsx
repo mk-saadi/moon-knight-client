@@ -85,7 +85,7 @@ const Gallerie = ({ galleryImages }) => {
                     })}
                 {!showAllImages && galleryImages.length > 6 && (
                     <button
-                        className="btn btn-info rounded-sm text-white w-2/3"
+                        className="btn btn-sm btn-accent rounded-sm text-white w-2/3"
                         onClick={handleShowMore}
                     >
                         Show More
@@ -93,7 +93,7 @@ const Gallerie = ({ galleryImages }) => {
                 )}
                 {showAllImages && (
                     <button
-                        className="btn btn-error rounded-sm text-white w-2/3"
+                        className="btn btn-sm btn-accent rounded-sm text-white w-2/3"
                         onClick={handleShowFirstSixImages}
                     >
                         Show Less

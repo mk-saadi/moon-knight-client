@@ -17,7 +17,7 @@ const Products = ({ figS }) => {
                 className="absolute bottom-0 w-full"
             >
                 <p className="my-2 text-error text-xl">{figS.price}</p>
-                <button className="btn btn-sm px-6 btn-info rounded-sm text-white text-xs flex justify-center items-center gap-2 flex-nowrap">
+                <button className="btn btn-xs md:btn-sm px-6 btn-info rounded-sm text-white text-xs flex justify-center items-center gap-2 flex-nowrap">
                     Details <BsFillArrowRightSquareFill />
                 </button>
             </Link>

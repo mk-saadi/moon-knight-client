@@ -1,10 +1,12 @@
 /* eslint-disable react/prop-types */
 import { BsFillArrowRightSquareFill } from "react-icons/bs";
 import { Link } from "react-router-dom";
+import useTitle from "../title/useWebTitle";
 
 const AllToysD = ({ fig }) => {
+    useTitle("figuresDetails");
     return (
-        <tr className="text-sm">
+        <tr className="text-xs sm:text-sm">
             <th>
                 <img
                     src={fig.img}
@@ -29,7 +31,7 @@ const AllToysD = ({ fig }) => {
             </td>
             <td>
                 <Link to={`/figDetails/${fig._id}`}>
-                    <button className="btn btn-sm btn-info rounded-sm text-white text-xs flex justify-center items-center gap-2 flex-nowrap">
+                    <button className="btn btn-xs sm:btn-sm btn-info rounded-sm text-white text-xs flex justify-center items-center gap-2 flex-nowrap">
                         Details <BsFillArrowRightSquareFill />
                     </button>
                 </Link>

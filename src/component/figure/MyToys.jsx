@@ -2,10 +2,12 @@ import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../authProvider/AuthProvider";
 import MyToysD from "./MyToysD";
 import Swal from "sweetalert2";
+import useTitle from "../title/useWebTitle";
 
 const MyToys = () => {
     const { user } = useContext(AuthContext);
     const [figs, setFig] = useState([]);
+    useTitle("myFigures");
 
     const url = `https://server-anime-fig.vercel.app/addedFigure?email=${user.email}`;
 
@@ -47,6 +49,18 @@ const MyToys = () => {
             className="my-16 overflow-x-auto min-h-screen mx-auto"
         >
             <table className="table table-zebra w-full">
+                <thead>
+                    <tr>
+                        <th>Image</th>
+                        <th>Seller</th>
+                        <th>Figure Name</th>
+                        <th>Sub-Category</th>
+                        <th>Price</th>
+                        <th>Details</th>
+                        <th>Modify</th>
+                        <th>Delete</th>
+                    </tr>
+                </thead>
                 <tbody>
                     {figs
                         .map((fig) => (

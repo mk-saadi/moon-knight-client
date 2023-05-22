@@ -1,5 +1,5 @@
 import { toast } from "react-hot-toast";
-import { BsFillArrowLeftSquareFill } from "react-icons/bs";
+import { BsFillArrowLeftSquareFill, BsQuestionSquareFill } from "react-icons/bs";
 import { useLoaderData, useNavigate } from "react-router-dom";
 
 const EditMyToys = () => {
@@ -47,8 +47,6 @@ const EditMyToys = () => {
             category: category,
             rating: rating,
         };
-
-        console.log(figure);
 
         fetch(`https://server-anime-fig-mk-saadi.vercel.app/addedFigure/${_id}`, {
             method: "PUT",
@@ -195,7 +193,44 @@ const EditMyToys = () => {
                             <option className="text-xs">Scale Figures</option>
                             <option className="text-xs">Bishoujo Figures</option>
                         </select>
-                        <p className="text-gray-600">*category: {category}</p>
+                        <div>
+                            <div className="dropdown dropdown-hover">
+                                <label
+                                    tabIndex={0}
+                                    className="btn btn-circle btn-ghost btn-xs text-info"
+                                >
+                                    <BsQuestionSquareFill className="text-xl" />
+                                </label>
+                                <div
+                                    tabIndex={0}
+                                    className="card compact dropdown-content shadow bg-base-100 rounded-sm"
+                                >
+                                    <div className="py-3 px-2 text-[9px] sm:text-xs md:w-80 sm:w-64 w-48">
+                                        <p>
+                                            <span className="text-info">Nendoroid:</span>{" "}
+                                            Chibi-style figures with a cute and deformed design,
+                                            featuring interchangeable faces, accessories, and poses.
+                                        </p>
+                                        <p>
+                                            <span className="text-info">Figma:</span> Articulated
+                                            action figures with high poseability and interchangeable
+                                            parts.
+                                        </p>
+                                        <p>
+                                            <span className="text-info">Scale Figures:</span>{" "}
+                                            Detailed and meticulously crafted anime figures in
+                                            various scales, capturing characters with lifelike
+                                            accuracy.
+                                        </p>
+                                        <p>
+                                            <span className="text-info">Bishoujo Figures:</span>{" "}
+                                            Anime figures focusing on the beauty and allure of
+                                            female characters.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <div className="pb-10 pt-4">
                         <textarea
@@ -216,7 +251,7 @@ const EditMyToys = () => {
                         </button>
                         <input
                             type="submit"
-                            className="btn btn-info rounded-sm text-white"
+                            className="btn btn-accent rounded-sm text-white"
                             value="Submit"
                         />
                     </div>

@@ -3,11 +3,13 @@ import AllToysD from "./AllToysD";
 import { useState } from "react";
 import { TbArrowsSort } from "react-icons/tb";
 import { FaSearch } from "react-icons/fa";
+import useTitle from "../title/useWebTitle";
 
 const AllToys = () => {
     const figs = useLoaderData();
     const [searchQuery, setSearchQuery] = useState("");
     const [sortOrder, setSortOrder] = useState("asc");
+    useTitle("allFigures");
 
     const filteredFigs = figs.filter((fig) =>
         fig.name.toLowerCase().includes(searchQuery.toLowerCase())
@@ -16,8 +18,6 @@ const AllToys = () => {
     const handleSearch = (e) => {
         setSearchQuery(e.target.value);
     };
-
-    // const sortedFigs = filteredFigs.sort((a, b) => a.price - b.price);
 
     const handleSort = () => {
         const newSortOrder = sortOrder === "asc" ? "desc" : "asc";
@@ -45,21 +45,31 @@ const AllToys = () => {
                 </button>
             </div>
             {/* sort */}
-
+            <div className="mb-0 mt-16 flex justify-end">
+                <button
+                    onClick={handleSort}
+                    className="btn btn-accent rounded-sm sm:btn-sm btn-xs flex gap-1 mr-1 sm:mr-2 md:mr-2  items-center"
+                >
+                    Sort By Price
+                    <TbArrowsSort className="text-lg" /> {sortOrder === "asc" ? "" : ""}
+                </button>
+            </div>
             <div
                 style={{ width: "98vw" }}
-                className="my-16 overflow-x-auto min-h-screen mx-auto"
+                className="mb-16 overflow-x-auto min-h-screen mx-auto"
             >
-                <div className="mb-0 flex justify-end">
-                    <button
-                        onClick={handleSort}
-                        className="btn btn-accent rounded-sm btn-sm flex gap-1 items-center"
-                    >
-                        Sort
-                        <TbArrowsSort className="text-lg" /> {sortOrder === "asc" ? "" : ""}
-                    </button>
-                </div>
                 <table className="table table-zebra w-full">
+                    <thead>
+                        <tr>
+                            <th>Image</th>
+                            <th>Seller</th>
+                            <th>Figure Name</th>
+                            <th>Sub-Category</th>
+                            <th>Quantity</th>
+                            <th>Price</th>
+                            <th>Details</th>
+                        </tr>
+                    </thead>
                     <tbody>
                         {sortedFigs
                             .map((fig) => (

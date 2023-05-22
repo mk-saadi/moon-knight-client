@@ -19,7 +19,6 @@ import AddDB2 from "./component/addDB2.jsx/AddDB2";
 import EditMyToys from "./component/figure/EditMyToys";
 import ErrorPage from "./component/errorPage/ErrorPage";
 import Categoriies from "./component/category/Categoriies";
-import CategoryD from "./component/category/CategoryD";
 
 const router = createBrowserRouter([
     {
@@ -116,12 +115,6 @@ const router = createBrowserRouter([
             {
                 path: "/category",
                 element: <Categoriies />,
-            },
-            {
-                path: "/categoryD/:id",
-                element: <CategoryD />,
-                loader: ({ params }) =>
-                    fetch(`https://server-anime-fig.vercel.app/addedFigure/${params.id}`),
             },
         ],
     },

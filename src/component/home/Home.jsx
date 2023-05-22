@@ -6,12 +6,14 @@ import Products from "../prouducts/Products";
 import { useEffect, useState } from "react";
 import ShowFig from "../showFig/ShowFig";
 import Categoriies from "../category/Categoriies";
+import useTitle from "../title/useWebTitle";
 
 const Home = () => {
     const figures = useLoaderData();
     const [showAll, setShowAll] = useState(false);
     const [showFig, setFig] = useState([]);
     const repeatedFigures = [...figures, ...figures];
+    useTitle("Home");
 
     const galleryImages = [
         {
@@ -77,13 +79,12 @@ const Home = () => {
 
     return (
         <>
-            <div className="relative mx-3 sm:mx-20 mt-14 h-screen">
+            <header className="relative mx-3 sm:mx-20 mt-14 h-screen">
                 <img
                     src={image}
                     alt=""
                     className="w-full h-5/6 sm:h-screen object-cover rounded-md shadow-lg"
                 />
-
                 <div className="flex justify-center gap-2 absolute bottom-0  w-full rounded-lg bg-gradient-to-t from-[#000] to-[rgba(21,21,21,0)] shadow-lg">
                     {figures
                         .slice(20, 24)
@@ -95,14 +96,17 @@ const Home = () => {
                             ></Banner>
                         ))}
                 </div>
-            </div>
+            </header>
             <main className="mt-20">
+                {/* sub-category */}
                 <div
                     className="mb-16"
-                    style={{ minHeight: "810px" }}
+                    style={{ minHeight: "510px" }}
                 >
                     <Categoriies />
                 </div>
+
+                {/* gallery section */}
                 <div className="grid grid-cols-1 md:grid-cols-3 mx-2 md:mx-16 ">
                     <div>
                         <h2 className="text-info text-4xl text-center mb-10">
@@ -130,41 +134,51 @@ const Home = () => {
                     </div>
                 </div>
 
-                <h3 className="-mb-12 mt-20 text-2xl ml-4 sm:ml-20 font-bold text-info border-l-2 border-sky-400 pl-4">
+                {/* shop section */}
+                <h3 className="-mb-12 mt-20 text-xl md:text-2xl ml-4 sm:ml-20 font-bold text-info border-l-2 border-sky-400 pl-4">
                     Best Selling Merch
                 </h3>
-                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-4 mx-4 sm:mx-20 mt-16">
-                    {repeatedFigures
-                        .reverse()
-                        .slice(0, showAll ? repeatedFigures.length : 12)
-                        .map((figS) => (
-                            <Products
-                                key={figS._id}
-                                figS={figS}
-                            ></Products>
-                        ))}
+                <div
+                    className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-4 mx-4 sm:mx-20 mt-16"
+                    data-aos="fade-up"
+                    data-aos-offset="100"
+                    data-aos-duration="200"
+                >
+                    {repeatedFigures.slice(0, showAll ? repeatedFigures.length : 12).map((figS) => (
+                        <Products
+                            key={figS._id}
+                            figS={figS}
+                        ></Products>
+                    ))}
                 </div>
                 <div className="flex justify-end mr-4 md:mr-28 mt-4 mb-16">
                     {showAll ? (
                         <button
-                            className="btn btn-sm px-6 btn-error text-white rounded-sm"
+                            className="btn btn-xs md:btn-sm px-6 btn-accent text-white rounded-sm"
                             onClick={handleShowLess}
                         >
                             View Less
                         </button>
                     ) : (
                         <button
-                            className="btn btn-sm px-6 btn-info text-white rounded-sm"
+                            className="btn btn-xs md:btn-sm px-6 btn-accent text-white rounded-sm"
                             onClick={handleShowMore}
                         >
                             View More...
                         </button>
                     )}
                 </div>
-                <h3 className="mt-20 text-2xl ml-4 sm:ml-20 font-bold text-info border-l-2 border-sky-400 pl-4">
+
+                {/* latest merch */}
+                <h3 className="mt-20 text-xl md:text-2xl ml-4 mb-4 sm:ml-20 font-bold text-info border-l-2 border-sky-400 pl-4">
                     Discover Latest Merch
                 </h3>
-                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-4 mx-4 sm:mx-20">
+                <div
+                    className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-4 mx-4 sm:mx-20"
+                    data-aos="fade-up"
+                    data-aos-offset="100"
+                    data-aos-duration="200"
+                >
                     {showFig.slice(0, 6).map((fi) => (
                         <ShowFig
                             key={fi._id}
@@ -174,7 +188,7 @@ const Home = () => {
                 </div>
                 <div className="flex justify-end mr-4 md:mr-28 mt-4 mb-20">
                     <Link to="/allToys">
-                        <button className="btn btn-sm px-6 btn-info text-white rounded-sm">
+                        <button className="btn btn-sm px-6 btn-accent text-white rounded-sm">
                             Show All
                         </button>
                     </Link>

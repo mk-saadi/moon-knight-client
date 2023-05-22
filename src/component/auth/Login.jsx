@@ -2,11 +2,13 @@ import { useContext } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../authProvider/AuthProvider";
 import { toast } from "react-hot-toast";
+import useTitle from "../title/useWebTitle";
 
 const Login = () => {
     const { signIn } = useContext(AuthContext);
     const navigate = useNavigate();
     const location = useLocation();
+    useTitle("login");
 
     const from = location.state?.from?.pathname || "/";
 
@@ -49,7 +51,6 @@ const Login = () => {
                         progress: undefined,
                     });
                 }
-                console.log(user);
             })
             .catch((error) => {
                 toast.error(error.message, {

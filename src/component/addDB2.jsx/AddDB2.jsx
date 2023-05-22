@@ -1,9 +1,11 @@
 import { useContext } from "react";
 import { AuthContext } from "../authProvider/AuthProvider";
 import { toast } from "react-hot-toast";
+import useTitle from "../title/useWebTitle";
 
 const AddDB2 = () => {
     const { user } = useContext(AuthContext);
+    useTitle("add2ndDb");
 
     const handlePost2 = (event) => {
         event.preventDefault();
@@ -41,7 +43,6 @@ const AddDB2 = () => {
         })
             .then((res) => res.json())
             .then((data) => {
-                console.log(data);
                 if (data.insertedId) {
                     toast.success("Your new booking was successfully added.", {
                         position: "top-center",

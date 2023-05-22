@@ -4,11 +4,13 @@ import { AuthContext } from "../authProvider/AuthProvider";
 import toast from "react-hot-toast";
 import { getAuth, updateProfile } from "firebase/auth";
 import app from "../../firebase/firebase.config";
+import useTitle from "../title/useWebTitle";
 
 const auth = getAuth(app);
 
 const Register = () => {
     const { newUser } = useContext(AuthContext);
+    useTitle("register");
 
     const handleRegister = (event) => {
         event.preventDefault();
@@ -18,8 +20,6 @@ const Register = () => {
         const profile = form.profile.files[0];
         const email = form.email.value;
         const password = form.password.value;
-
-        form.reset();
 
         if (password.length < 6) {
             toast.error("password must be at least 6 characters long!", {
@@ -33,6 +33,8 @@ const Register = () => {
             });
             return;
         }
+
+        form.reset();
 
         newUser(email, password)
             .then((res) => {
@@ -52,7 +54,6 @@ const Register = () => {
                         progress: undefined,
                     });
                 }
-                console.log(user);
             })
             .catch((error) => {
                 toast.error(error.message, {
@@ -82,6 +83,7 @@ const Register = () => {
                         <input
                             type="text"
                             name="name"
+                            required
                             placeholder="your name"
                             className="input input-bordered bg-white text-gray-600"
                         />
@@ -93,6 +95,7 @@ const Register = () => {
                         <input
                             name="profile"
                             type="file"
+                            required
                             className="file-input file-input-bordered file-input-error w-full max-w-xs"
                         />
                     </div>
@@ -103,6 +106,7 @@ const Register = () => {
                         <input
                             type="email"
                             name="email"
+                            required
                             placeholder="your email"
                             className="input input-bordered bg-white text-gray-600"
                         />
@@ -114,6 +118,7 @@ const Register = () => {
                         <input
                             type="password"
                             name="password"
+                            required
                             placeholder="your password"
                             className="input input-bordered bg-white text-gray-600"
                         />

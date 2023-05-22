@@ -52,7 +52,7 @@ const FiguresD = () => {
             </div>
             <button
                 onClick={handleGoBack}
-                className="btn btn-error rounded-sm text-white mt-10 sm:mx-10 px-10 flex justify-center items-center gap-2"
+                className="btn btn-accent rounded-sm text-white mt-10 sm:mx-10 px-10 flex justify-center items-center gap-2"
             >
                 <BsFillArrowLeftSquareFill className=" text-xl"></BsFillArrowLeftSquareFill> Go Back
             </button>
