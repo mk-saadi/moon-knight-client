@@ -57,6 +57,9 @@ const AllToys = () => {
             <div
                 style={{ width: "98vw" }}
                 className="mb-16 overflow-x-auto min-h-screen mx-auto"
+                data-aos="fade-up"
+                data-aos-offset="100"
+                data-aos-duration="300"
             >
                 <table className="table table-zebra w-full">
                     <thead>

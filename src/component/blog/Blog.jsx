@@ -4,7 +4,12 @@ const Blog = () => {
     useTitle("blog");
     return (
         <div className="min-h-screen mx-2 sm:mx-16 my-20 grid grid-cols-1 gap-y-8">
-            <div className="text-xs px-2 sm:mx-3 bg-gray-700 rounded-md sm:px-4 py-6 text-slate-300 shadow-md grid grid-cols-1 gap-y-2">
+            <div
+                className="text-xs px-2 sm:mx-3 bg-gray-700 rounded-md sm:px-4 py-6 text-slate-300 shadow-md grid grid-cols-1 gap-y-2"
+                data-aos="fade-right"
+                data-aos-offset="100"
+                data-aos-duration="300"
+            >
                 <h2 className="text-lg sm:text-xl font-bold text-sky-300 mb-4">
                     Q. What is an access token and refresh token? How do they work and where should
                     we store them on the client-side?
@@ -44,7 +49,12 @@ const Blog = () => {
                 </p>
             </div>
             <hr />
-            <div className="text-xs px-2 sm:mx-3 bg-gray-700 rounded-md sm:px-4 py-6 text-slate-300 shadow-md grid grid-cols-1 gap-y-2">
+            <div
+                className="text-xs px-2 sm:mx-3 bg-gray-700 rounded-md sm:px-4 py-6 text-slate-300 shadow-md grid grid-cols-1 gap-y-2"
+                data-aos="fade-left"
+                data-aos-offset="100"
+                data-aos-duration="300"
+            >
                 <h2 className="text-lg sm:text-xl font-bold text-sky-300 mb-4">
                     Q. Compare SQL and NoSQL databases?
                 </h2>
@@ -71,7 +81,12 @@ const Blog = () => {
                 </p>
             </div>
             <hr />
-            <div className="text-xs px-2 sm:mx-3 bg-gray-700 rounded-md sm:px-4 py-6 text-slate-300 shadow-md grid grid-cols-1 gap-y-2">
+            <div
+                className="text-xs px-2 sm:mx-3 bg-gray-700 rounded-md sm:px-4 py-6 text-slate-300 shadow-md grid grid-cols-1 gap-y-2"
+                data-aos="fade-right"
+                data-aos-offset="100"
+                data-aos-duration="300"
+            >
                 <h2 className="text-lg sm:text-xl font-bold text-sky-300 mb-4">
                     Q. What is express js? What is Nest JS?
                 </h2>
@@ -99,7 +114,12 @@ const Blog = () => {
                 </p>
             </div>
             <hr />
-            <div className="text-xs px-2 sm:mx-3 bg-gray-700 rounded-md sm:px-4 py-6 text-slate-300 shadow-md grid grid-cols-1 gap-y-2">
+            <div
+                className="text-xs px-2 sm:mx-3 bg-gray-700 rounded-md sm:px-4 py-6 text-slate-300 shadow-md grid grid-cols-1 gap-y-2"
+                data-aos="fade-left"
+                data-aos-offset="100"
+                data-aos-duration="300"
+            >
                 <h2 className="text-lg sm:text-xl font-bold text-sky-300 mb-4">
                     Q. What is MongoDB aggregate and how does it work?
                 </h2>

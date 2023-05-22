@@ -40,7 +40,7 @@ const Categoriies = () => {
                     className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-4 mx-4 sm:mx-20 mt-4"
                     data-aos="fade-up"
                     data-aos-offset="100"
-                    data-aos-duration="200"
+                    data-aos-duration="300"
                 >
                     {filteredFigures.map((figS) => (
                         <CategoryD

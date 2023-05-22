@@ -142,7 +142,7 @@ const Home = () => {
                     className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-4 mx-4 sm:mx-20 mt-16"
                     data-aos="fade-up"
                     data-aos-offset="100"
-                    data-aos-duration="200"
+                    data-aos-duration="300"
                 >
                     {repeatedFigures.slice(0, showAll ? repeatedFigures.length : 12).map((figS) => (
                         <Products
@@ -177,7 +177,7 @@ const Home = () => {
                     className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-4 mx-4 sm:mx-20"
                     data-aos="fade-up"
                     data-aos-offset="100"
-                    data-aos-duration="200"
+                    data-aos-duration="300"
                 >
                     {showFig.slice(0, 6).map((fi) => (
                         <ShowFig
