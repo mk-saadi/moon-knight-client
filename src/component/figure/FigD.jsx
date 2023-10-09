@@ -2,9 +2,13 @@ import { BsFillArrowLeftSquareFill } from "react-icons/bs";
 import { useLoaderData, useNavigate } from "react-router-dom";
 import { Rating } from "@smastrom/react-rating";
 import "@smastrom/react-rating/style.css";
+import useTitle from "../hook/useWebTitle";
 
 const FigD = () => {
     const fig = useLoaderData();
+    useTitle(fig.name);
+
+    console.log(fig);
 
     const navigate = useNavigate();
 
@@ -17,6 +21,7 @@ const FigD = () => {
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                 <div className="mx-4">
                     <img
+                        // style={{ transform: "skew(15deg, 15deg)" }}
                         src={fig.img}
                         alt=""
                         className="h-[350px] sm:h-[500px] sm:w-auto object-cover rounded-lg mx-auto"
@@ -31,10 +36,9 @@ const FigD = () => {
                         <p className="text-red-600 font-semibold">
                             US <span className="text-xl">${fig.price}</span>
                         </p>
-                        <p>0.62% cash back</p>
                         <div className="my-3">
                             <Rating
-                                style={{ maxWidth: 150 }}
+                                style={{ maxWidth: 120 }}
                                 value={Math.round(fig.rating)}
                             />
                         </div>
@@ -44,12 +48,8 @@ const FigD = () => {
                             <span className="font-semibold">Product Name:</span> {fig.name}
                         </p>
                         <p>
-                            <span className="font-semibold">Manufacturer:</span> {fig.Manufacturer}
+                            <span className="font-semibold">Category:</span> {fig.category}
                         </p>
-                        <p>
-                            <span className="font-semibold">Seller:</span> {fig.seller}
-                        </p>
-                        <p className="my-3 text-gray-400">Order Limit: 3 per person</p>
                         <p
                             style={{ whiteSpace: "pre-line" }}
                             className="mt-10"

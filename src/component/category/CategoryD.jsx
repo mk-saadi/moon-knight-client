@@ -10,7 +10,12 @@ const CategoryD = ({ figS }) => {
                 alt=""
                 className="rounded-sm mb-3 h-[200px] w-auto object-cover"
             />
-            <p className="text-sm mb-28 text-left px-2">{figS.name}</p>
+            {/* <p className="text-sm mb-28 text-left px-2">{figS.name}</p> */}
+            <p className="text-sm mb-28 text-left px-2">
+                {figS.name.split(" ").length > 6
+                    ? `${figS.name.split(" ").slice(0, 6).join(" ")}...`
+                    : figS.name}
+            </p>
 
             <div className="absolute bottom-0 w-full">
                 <Rating

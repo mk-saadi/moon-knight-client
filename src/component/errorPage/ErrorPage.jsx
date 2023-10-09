@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 const ErrorPage = () => {
     return (
-        <div className="min-h-screen flex flex-col justify-center items-center">
+        <div className="min-h-screen flex flex-col justify-center items-center noise">
             <img
                 src="https://internetdevels.com/sites/default/files/public/blog_preview/404_page_cover.jpg"
                 alt=""

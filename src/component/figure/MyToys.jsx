@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../authProvider/AuthProvider";
 import MyToysD from "./MyToysD";
 import Swal from "sweetalert2";
-import useTitle from "../title/useWebTitle";
+import useTitle from "../hook/useWebTitle";
 
 const MyToys = () => {
     const { user } = useContext(AuthContext);
@@ -23,7 +23,7 @@ const MyToys = () => {
             showDenyButton: true,
             showCancelButton: true,
             confirmButtonText: "Delete",
-            denyButtonText: `Don't save`,
+            denyButtonText: `Don't Delete`,
         }).then((result) => {
             if (result.isConfirmed) {
                 fetch(`https://server-anime-fig.vercel.app/addedFigure/${id}`, {
@@ -51,7 +51,7 @@ const MyToys = () => {
             data-aos-offset="100"
             data-aos-duration="300"
         >
-            <table className="table table-zebra w-full">
+            <table className="table table-zebra w-full  max-w-[1366px]">
                 <thead>
                     <tr>
                         <th>Image</th>

@@ -4,12 +4,13 @@ import { BsFillArrowRightSquareFill } from "react-icons/bs";
 
 const Products = ({ figS }) => {
     return (
-        <div className="relative">
+        <div className="relative ">
             <img
                 src={figS.img}
                 alt=""
                 className="rounded-sm mb-3 h-[200px] w-auto object-cover"
             />
+            {/* <p className="text-sm mb-20 text-left px-2">{figS.name}</p> */}
             <p className="text-sm mb-20 text-left px-2">{figS.name}</p>
 
             <Link

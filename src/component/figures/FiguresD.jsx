@@ -20,27 +20,19 @@ const FiguresD = () => {
                     />
                     <p className="text-xs italic text-center">{fig.name}</p>
                 </div>
-                <div className="sm:mr-10 md:mr-36">
+                <div className="sm:mr-10 md:mr-36 text-gray-700">
                     <div>
-                        <p className="text-xl sm:text-2xl text-slate-200 font-semibold mb-4">
-                            {fig.name}
-                        </p>
+                        <p className="text-xl sm:text-2xl font-semibold mb-4">{fig.name}</p>
                         <p className="text-red-600 font-semibold">
                             US <span className="text-xl">{fig.price}</span>
                         </p>
                         <p>0.62% cash back</p>
                     </div>
-                    <div className="text-slate-300 mt-10">
+                    <div className="text-gray-700 mt-10">
                         <p>
                             <span className="font-semibold">Product Name:</span> {fig.name}
                         </p>
-                        <p>
-                            <span className="font-semibold">Manufacturer:</span> {fig.Manufacturer}
-                        </p>
-                        <p>
-                            <span className="font-semibold">Seller:</span> {fig.seller}
-                        </p>
-                        <p className="my-3 text-gray-400">Order Limit: 3 per person</p>
+
                         <p
                             style={{ whiteSpace: "pre-line" }}
                             className="mt-10"

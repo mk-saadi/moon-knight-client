@@ -1,24 +1,36 @@
 import {
+    GithubAuthProvider,
     GoogleAuthProvider,
     createUserWithEmailAndPassword,
     getAuth,
     onAuthStateChanged,
     signInWithEmailAndPassword,
     signInWithPopup,
+    signInWithRedirect,
     signOut,
 } from "firebase/auth";
 import app from "../../firebase/firebase.config";
 import { createContext, useEffect, useState } from "react";
+import axios from "axios";
 
 const auth = getAuth(app);
 
 export const AuthContext = createContext();
 
-// eslint-disable-next-line react/prop-types
 const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
-    const googleProvider = new GoogleAuthProvider();
+    const gitProvider = new GithubAuthProvider();
+
+    const GoogleProvider = new GoogleAuthProvider();
+
+    GoogleProvider.setCustomParameters({
+        prompt: "login",
+    });
+
+    const signInWithGoogleRedirect = () => {
+        signInWithRedirect(auth, GoogleProvider);
+    };
 
     const newUser = (email, password) => {
         setLoading(true);
@@ -30,9 +42,9 @@ const AuthProvider = ({ children }) => {
         return signInWithEmailAndPassword(auth, email, password);
     };
 
-    const googleSIgnIn = () => {
+    const gitHubSignIn = () => {
         setLoading(true);
-        return signInWithPopup(auth, googleProvider);
+        return signInWithPopup(auth, gitProvider);
     };
 
     const logOut = () => {
@@ -40,26 +52,48 @@ const AuthProvider = ({ children }) => {
         return signOut(auth);
     };
 
-    useEffect(() => {
-        const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-            setLoading(false);
-            setUser(currentUser);
-            if (currentUser) {
-                localStorage.setItem("user", JSON.stringify(currentUser));
-            } else {
-                localStorage.removeItem("user");
-            }
-        });
-        return () => {
-            return unsubscribe;
-        };
-    }, []);
+    // useEffect(() => {
+    //     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+    //         setLoading(false);
+    //         setUser(currentUser);
+    //         if (currentUser) {
+    //             localStorage.setItem("user", JSON.stringify(currentUser));
+    //         } else {
+    //             localStorage.removeItem("user");
+    //         }
+    //     });
+    //     return () => {
+    //         return unsubscribe;
+    //     };
+    // }, []);
+
+    // useEffect(() => {
+    //     const storedUser = localStorage.getItem("user");
+    //     if (storedUser) {
+    //         setUser(JSON.parse(storedUser));
+    //     }
+    // }, []);
 
     useEffect(() => {
-        const storedUser = localStorage.getItem("user");
-        if (storedUser) {
-            setUser(JSON.parse(storedUser));
-        }
+        const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+            setUser(currentUser);
+            if (currentUser) {
+                axios
+                    .post("http://localhost:9000/jwt", {
+                        email: currentUser.email,
+                    })
+                    .then((data) => {
+                        localStorage.setItem("access-token", data.data.token);
+                        setLoading(false);
+                    });
+            } else {
+                localStorage.removeItem("access-token");
+            }
+        });
+
+        return () => {
+            unsubscribe();
+        };
     }, []);
 
     const authInfo = {
@@ -67,8 +101,10 @@ const AuthProvider = ({ children }) => {
         loading,
         newUser,
         signIn,
-        googleSIgnIn,
+        signInWithGoogleRedirect,
+        gitHubSignIn,
         logOut,
+        auth,
     };
 
     return <AuthContext.Provider value={authInfo}>{children}</AuthContext.Provider>;

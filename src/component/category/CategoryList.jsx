@@ -22,17 +22,15 @@ const CategoryList = ({ figures, onCategorySelect }) => {
     return (
         <div className="grid grid-cols-2 md:grid-cols-5 md:gap-4 gap-2 md:mr-40 justify-left mt-16 mb-6 mx-4 md:ml-24 sm:mx-20">
             {categoryNames.map((category) => (
-                <div
+                <button
                     key={category}
-                    className={`btn-xs text-xs sm:text-sm md:text-base cursor-pointer border border-b-0 border-t-4 border-x-0 flex flex-nowrap mb-4  ${
-                        selectedCategory === category
-                            ? "border-info text-info"
-                            : "border-transparent text-accent"
+                    className={`btn text-white btn-xs text-xs sm:text-sm btn-sm rounded-sm no-animation whitespace-nowrap ${
+                        selectedCategory === category ? "btn-accent text-white z-50" : "btn-info"
                     }`}
                     onClick={() => handleCategoryClick(category)}
                 >
                     {category}
-                </div>
+                </button>
                 // <button
                 //     key={category}
                 //     className={`btn text-white btn-xs text-xs sm:text-sm md:btn-md rounded-sm no-animation ${

@@ -9,7 +9,12 @@ const ShowFig = ({ fi }) => {
                 alt=""
                 className="rounded-sm mb-3 h-[200px] w-auto object-cover"
             />
-            <p className="text-sm mb-20 text-left px-2">{fi.name}</p>
+            {/* <p className="text-sm mb-20 text-left px-2">{fi.name}</p> */}
+            <p className="text-sm mb-28 text-left px-2 text-slate-400">
+                {fi.name.split(" ").length > 5
+                    ? `${fi.name.split(" ").slice(0, 5).join(" ")}...`
+                    : fi.name}
+            </p>
 
             <Link
                 to={`/figDetails/${fi._id}`}

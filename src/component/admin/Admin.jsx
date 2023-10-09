@@ -5,7 +5,7 @@ import { Toaster } from "react-hot-toast";
 
 const Admin = () => {
     return (
-        <div className="bg-gray-800">
+        <div className="bg-slate-200 max-w-[1366px] mx-auto">
             <Navbar />
             <Outlet />
             <Footer />

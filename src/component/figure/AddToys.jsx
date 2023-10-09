@@ -1,47 +1,38 @@
-import { useContext } from "react";
-import { AuthContext } from "../authProvider/AuthProvider";
 import { toast } from "react-hot-toast";
-import useTitle from "../title/useWebTitle";
-import { BsQuestionSquareFill } from "react-icons/bs";
+import useTitle from "../hook/useWebTitle";
 
 const AddToys = () => {
-    const { user } = useContext(AuthContext);
-    useTitle("addFigures");
+    useTitle("add jewelry");
 
     const handlePost = (event) => {
         event.preventDefault();
 
         const form = event.target;
+
         const img = form.img.value;
-        const email = form.email.value;
         const name = form.name.value;
         const price = parseFloat(form.price.value);
         const quantity = parseFloat(form.quantity.value);
         const description = form.description.value;
-        const seller = form.seller.value;
-        const Manufacturer = form.Manufacturer.value;
         const category = form.category.value;
         const rating = parseFloat(form.ratings.value);
 
-        const figure = {
+        const jewel = {
             img: img,
-            email: email,
             name: name,
             price: price,
             quantity: quantity,
-            seller: seller,
             description: description,
-            Manufacturer: Manufacturer,
             category: category,
             rating: rating,
         };
 
-        fetch("https://server-anime-fig-mk-saadi.vercel.app/addedFigure", {
+        fetch("http://localhost:9000/addedJewelry", {
             method: "POST",
             headers: {
                 "content-type": "application/json",
             },
-            body: JSON.stringify(figure),
+            body: JSON.stringify(jewel),
         })
             .then((res) => res.json())
             .then((data) => {
@@ -61,27 +52,16 @@ const AddToys = () => {
     };
 
     return (
-        <div className="bg-gray-800">
+        <div className="bg-slate-300">
             <form
                 onSubmit={handlePost}
                 className="px-1 my-20"
             >
-                <div className="relative card-body mx-0 px-2 sm:px-6 bg-base-300 rounded-md md:px-24">
+                <div className="relative card-body mx-0 px-2 sm:px-6 rounded-md md:px-24">
                     <p className="text-2xl text-error font-bold text-left">
-                        Add New Figure To Database
+                        Add New Jewelry To Database
                     </p>
                     <div className="grid grid-cols-2 sm:grid-cols-2 gap-2 md:gap-4 pt-10">
-                        {/* seller */}
-                        <div className="form-control">
-                            <input
-                                type="text"
-                                name="seller"
-                                required
-                                defaultValue={user?.displayName}
-                                placeholder="seller's name"
-                                className="text-sm sm:text-base text-slate-100 input input-bordered bg-gray-600 rounded-sm"
-                            />
-                        </div>
                         {/* last name */}
                         <div className="form-control">
                             <input
@@ -89,17 +69,6 @@ const AddToys = () => {
                                 name="name"
                                 required
                                 placeholder="product name"
-                                className="text-sm sm:text-base text-slate-100 input input-bordered bg-gray-600 rounded-sm"
-                            />
-                        </div>
-                        {/* phone */}
-                        <div className="form-control">
-                            <input
-                                type="email"
-                                name="email"
-                                required
-                                defaultValue={user?.email}
-                                placeholder="seller's email"
                                 className="text-sm sm:text-base text-slate-100 input input-bordered bg-gray-600 rounded-sm"
                             />
                         </div>
@@ -115,17 +84,8 @@ const AddToys = () => {
                         </div>
                         <div className="form-control">
                             <input
-                                type="text"
-                                name="Manufacturer"
-                                required
-                                placeholder="manufacturer"
-                                className="text-sm sm:text-base text-slate-100 input input-bordered bg-gray-600 rounded-sm"
-                            />
-                        </div>
-                        <div className="form-control">
-                            <input
                                 type="url"
-                                name="img"
+                                name="img" // array of img url
                                 required
                                 placeholder="product image"
                                 className="text-sm sm:text-base text-slate-100 input input-bordered bg-gray-600 rounded-sm"
@@ -157,51 +117,13 @@ const AddToys = () => {
                                 disabled
                                 selected
                             >
-                                products sub-category
+                                products category
                             </option>
-                            <option className="text-xs">Nendoroid</option>
-                            <option className="text-xs">Figma</option>
-                            <option className="text-xs">Scale Figures</option>
-                            <option className="text-xs">Bishoujo Figures</option>
+                            <option className="text-xs">Earrings</option>
+                            <option className="text-xs">Bracelet</option>
+                            <option className="text-xs">Ring</option>
+                            <option className="text-xs">Chain</option>
                         </select>
-                        <div>
-                            <div className="dropdown dropdown-hover">
-                                <label
-                                    tabIndex={0}
-                                    className="btn btn-circle btn-ghost btn-xs text-info"
-                                >
-                                    <BsQuestionSquareFill className="text-xl" />
-                                </label>
-                                <div
-                                    tabIndex={0}
-                                    className="card compact dropdown-content shadow bg-base-100 rounded-sm"
-                                >
-                                    <div className="py-3 px-2 text-[9px] sm:text-xs md:w-80 sm:w-64 w-48">
-                                        <p>
-                                            <span className="text-info">Nendoroid:</span>{" "}
-                                            Chibi-style figures with a cute and deformed design,
-                                            featuring interchangeable faces, accessories, and poses.
-                                        </p>
-                                        <p>
-                                            <span className="text-info">Figma:</span> Articulated
-                                            action figures with high poseability and interchangeable
-                                            parts.
-                                        </p>
-                                        <p>
-                                            <span className="text-info">Scale Figures:</span>{" "}
-                                            Detailed and meticulously crafted anime figures in
-                                            various scales, capturing characters with lifelike
-                                            accuracy.
-                                        </p>
-                                        <p>
-                                            <span className="text-info">Bishoujo Figures:</span>{" "}
-                                            Anime figures focusing on the beauty and allure of
-                                            female characters.
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                     </div>
                     <div className="pb-10 pt-4">
                         <textarea

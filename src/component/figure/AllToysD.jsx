@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import { BsFillArrowRightSquareFill } from "react-icons/bs";
 import { Link } from "react-router-dom";
-import useTitle from "../title/useWebTitle";
+import useTitle from "../hook/useWebTitle";
 
 const AllToysD = ({ fig }) => {
     useTitle("figuresDetails");
@@ -15,10 +15,7 @@ const AllToysD = ({ fig }) => {
                 />
             </th>
             <td>
-                <p>{fig.seller.length > 6 ? `${fig.seller.slice(0, 6)}...` : fig.seller}</p>
-            </td>
-            <td>
-                <p>{fig.name.slice(0, 25)}...</p>
+                <p>{fig.name}</p>
             </td>
             <td>
                 <p>{fig.category}</p>
@@ -31,7 +28,7 @@ const AllToysD = ({ fig }) => {
             </td>
             <td>
                 <Link to={`/figDetails/${fig._id}`}>
-                    <button className="btn btn-xs sm:btn-sm btn-info rounded-sm text-white text-xs flex justify-center items-center gap-2 flex-nowrap">
+                    <button className="btn btn-xs sm:btn-sm btn-info rounded-sm text-white text-xs flex justify-center items-center gap-2 flex-nowrap no-animation">
                         Details <BsFillArrowRightSquareFill />
                     </button>
                 </Link>

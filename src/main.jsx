@@ -15,7 +15,6 @@ import MyToys from "./component/figure/MyToys";
 import AddToys from "./component/figure/AddToys";
 import Blog from "./component/blog/Blog";
 import FigD from "./component/figure/FigD";
-import AddDB2 from "./component/addDB2.jsx/AddDB2";
 import EditMyToys from "./component/figure/EditMyToys";
 import ErrorPage from "./component/errorPage/ErrorPage";
 import Categoriies from "./component/category/Categoriies";
@@ -29,7 +28,7 @@ const router = createBrowserRouter([
             {
                 path: "/",
                 element: <Home />,
-                loader: () => fetch("https://server-anime-fig-mk-saadi.vercel.app/figures"),
+                loader: () => fetch("http://localhost:9000/addedJewelry"),
             },
             {
                 path: "/login",
@@ -46,8 +45,7 @@ const router = createBrowserRouter([
                         <FiguresD />
                     </PrivateRoute>
                 ),
-                loader: ({ params }) =>
-                    fetch(`https://server-anime-fig-mk-saadi.vercel.app/figures/${params.id}`),
+                loader: ({ params }) => fetch(`http://localhost:9000/addedJewelry/${params.id}`),
             },
             {
                 path: "/products/:id",
@@ -59,10 +57,11 @@ const router = createBrowserRouter([
                 loader: ({ params }) =>
                     fetch(`https://server-anime-fig-mk-saadi.vercel.app/figures/${params.id}`),
             },
+            // http://localhost:9000/addedJewelry
             {
-                path: "/allToys",
+                path: "/allJewelry",
                 element: <AllToys />,
-                loader: () => fetch("https://server-anime-fig-mk-saadi.vercel.app/addedFigure"),
+                loader: () => fetch("http://localhost:9000/addedJewelry"),
             },
             {
                 path: "/figDetails/:id",
@@ -71,8 +70,7 @@ const router = createBrowserRouter([
                         <FigD></FigD>
                     </PrivateRoute>
                 ),
-                loader: ({ params }) =>
-                    fetch(`https://server-anime-fig-mk-saadi.vercel.app/addedFigure/${params.id}`),
+                loader: ({ params }) => fetch(`http://localhost:9000/addedJewelry/${params.id}`),
             },
             {
                 path: "/myToys",
@@ -94,14 +92,7 @@ const router = createBrowserRouter([
                     </PrivateRoute>
                 ),
             },
-            {
-                path: "/addDB2",
-                element: (
-                    <PrivateRoute>
-                        <AddDB2 />
-                    </PrivateRoute>
-                ),
-            },
+
             {
                 path: "/editMyToys/:id",
                 element: (

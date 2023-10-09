@@ -4,7 +4,7 @@ import { AuthContext } from "../authProvider/AuthProvider";
 import toast from "react-hot-toast";
 import { getAuth, updateProfile } from "firebase/auth";
 import app from "../../firebase/firebase.config";
-import useTitle from "../title/useWebTitle";
+import useTitle from "../hook/useWebTitle";
 
 const auth = getAuth(app);
 
@@ -17,7 +17,7 @@ const Register = () => {
 
         const form = event.target;
         const name = form.name.value;
-        const profile = form.profile.files[0];
+        const photoURL = form.image.value;
         const email = form.email.value;
         const password = form.password.value;
 
@@ -41,7 +41,7 @@ const Register = () => {
                 const user = res.user;
                 updateProfile(auth.currentUser, {
                     displayName: name,
-                    photoURL: URL.createObjectURL(profile),
+                    photoURL: photoURL,
                 });
                 if (user.uid) {
                     toast.success("Account successfully created", {
@@ -90,15 +90,17 @@ const Register = () => {
                     </div>
                     <div className="form-control">
                         <label className="label">
-                            <span className="label-text">Profile</span>
+                            <span className="label-text">Photo</span>
                         </label>
                         <input
-                            name="profile"
-                            type="file"
+                            type="url"
+                            name="image"
                             required
-                            className="file-input file-input-bordered file-input-error w-full max-w-xs"
+                            placeholder="your photo url"
+                            className="input input-bordered bg-white text-gray-600"
                         />
                     </div>
+
                     <div className="form-control">
                         <label className="label">
                             <span className="label-text">Email</span>
